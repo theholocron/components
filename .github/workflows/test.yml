@@ -1,0 +1,45 @@
+name: Test
+
+on:
+  push
+
+jobs:
+  coverage:
+    name: Run tests and collect coverage
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - packages/bootstrap
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout repository
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        name: Setup Node.js @v20
+        with:
+          cache: npm
+          node-version: 20.x
+
+      - run: npm ci
+        name: Install dependencies
+
+      - run: npm test -- --coverage --reporter=junit
+        name: Run tests with coverage
+        working-directory: ${{ matrix.package }}
+
+      - uses: codecov/codecov-action@v4
+        name: Upload results to Codecov
+        with:
+          files: ./${{ matrix.package }}/coverage/coverage-final.json
+          flags: ${{ matrix.package }}
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - uses: codecov/test-results-action@v1
+        name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        with:
+          working-directory: ${{ matrix.package }}
+          token: ${{ secrets.CODECOV_TOKEN }}

@@ -1,29 +1,32 @@
 {
-  "name": "@theholocron/monorepo-template",
+  "name": "@theholocron/components",
   "version": "0.0.0",
-  "description": "<description>",
-  "homepage": "https://github.com/theholocron/monorepo-template#readme",
-  "bugs": "https://github.com/theholocron/monorepo-template/issues",
+  "description": "React components used within the Galaxy.",
+  "homepage": "https://github.com/theholocron/components#readme",
+  "bugs": "https://github.com/theholocron/components/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theholocron/monorepo-template.git"
+    "url": "git+https://github.com/theholocron/components.git"
   },
   "license": "GPL-3.0",
   "author": "Newton Koumantzelis",
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "build": "turbo run build",
     "lint": "turbo run lint",
+    "prepare": "husky",
     "release": "changeset",
+    "storybook": "turbo run build:storybook",
     "test": "turbo run test"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.9",
-    "@theholocron/commitlint-config": "^3.4.4",
-    "@theholocron/lint-staged-config": "^3.4.4",
+    "@theholocron/commitlint-config": "^3.5.1",
+    "@theholocron/lint-staged-config": "^3.5.1",
     "alexjs": "^1.0.0",
     "turbo": "^2.2.3",
     "vitest": "^2.1.4"
@@ -36,6 +39,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "releases": "https://github.com/theholocron/monorepo-template/releases",
-  "wiki": "https://github.com/theholocron/monorepo-template/wiki"
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  },
+  "releases": "https://github.com/theholocron/components/releases",
+  "wiki": "https://github.com/theholocron/components/wiki"
 }
