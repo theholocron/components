@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { Bootstrap } from "../../src/";
+import { Loader } from "../../src/loading/loading.mock";
 import { useAuth } from "../inbox/auth/";
 import { Inbox } from "./box";
 
@@ -25,7 +26,7 @@ export function InboxPage() {
 	}, [user?.token]);
 
 	return (
-		<Bootstrap conf={conf}>
+		<Bootstrap conf={conf} loader={Loader}>
 			<Inbox />
 		</Bootstrap>
 	);

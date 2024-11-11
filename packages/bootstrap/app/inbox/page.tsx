@@ -1,6 +1,7 @@
 "use client";
 
 import { Bootstrap } from "../../src/";
+import { Loader } from "../../src/loading/loading.mock";
 import { Inbox } from "../../page/inbox/box";
 
 const conf = {
@@ -13,7 +14,7 @@ const conf = {
 
 export default function InboxPage() {
 	return (
-		<Bootstrap conf={conf}>
+		<Bootstrap conf={conf} loader={Loader}>
 			<Inbox />
 		</Bootstrap>
 	);
