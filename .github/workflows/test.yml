@@ -83,6 +83,9 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           workingDir: ${{ matrix.package }}
+        env:
+          NEXT_PUBLIC_ENVIRONMENT: "development"
+          STORYBOOK_NEXT_PUBLIC_ENVIRONMENT: "development"
 
   # Run interaction and accessibility tests
   interaction-and-accessibility:
