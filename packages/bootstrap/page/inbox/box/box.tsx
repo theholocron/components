@@ -1,4 +1,8 @@
+import { Group, Text, Title } from "@mantine/core";
+import { IconUserFilled } from "@tabler/icons-react";
+import * as React from "react";
 import { TaskList, useTasks } from "../tasks";
+import { useStorage } from "../../../src/";
 
 export interface InboxProps {
 	error?: string;
@@ -6,10 +10,15 @@ export interface InboxProps {
 
 type TaskState = "TASK_PINNED" | "TASK_INBOX";
 
-export function Inbox (props: InboxProps) {
-	const {
-		error = "",
-	} = props;
+export function Inbox(props: InboxProps) {
+	const { error = "" } = props;
+	const storage = useStorage();
+	const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
+
+	React.useEffect(() => {
+		storage.sendTo("user.isLoggedIn", true);
+		setIsLoggedIn(true);
+	}, []);
 
 	const [tasks, dispatch] = useTasks();
 
@@ -50,9 +59,10 @@ export function Inbox (props: InboxProps) {
 
 	return (
 		<div className="page lists-show">
-			<nav>
-				<h1 className="title-page">Taskbox</h1>
-			</nav>
+			<Group justify="space-between" pr={15}>
+				<Title p={10}>Taskbox</Title>
+				<Text>{isLoggedIn && <IconUserFilled />}</Text>
+			</Group>
 			<TaskList
 				tasks={tasks}
 				onArchiveTask={archiveTask}

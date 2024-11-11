@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import * as React from "react";
 import MSW from "./msw";
 
-import "./app.css";
+import "@mantine/core/styles.css";
 
 /*
 if (process.env.NEXT_RUNTIME === "nodejs") {
@@ -29,10 +29,10 @@ export type WithChildren = Readonly<{
 	children: React.ReactNode;
 }>;
 
-export default function RootLayout (props: WithChildren) {
+export default function RootLayout(props: WithChildren) {
 	return (
 		<html lang="en">
-			<body>
+			<body style={{ overflow: "hidden" }}>
 				<MSW.Provider>{props.children}</MSW.Provider>
 			</body>
 		</html>

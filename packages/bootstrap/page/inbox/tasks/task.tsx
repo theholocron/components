@@ -1,3 +1,6 @@
+import { ActionIcon, Checkbox, Group, TextInput } from "@mantine/core";
+import { IconStar, IconTrash } from "@tabler/icons-react";
+
 export interface TaskProps {
 	task: {
 		id: string;
@@ -5,12 +8,15 @@ export interface TaskProps {
 		state: "TASK_INBOX" | "TASK_PINNED" | "TASK_ARCHIVED";
 	};
 	onArchiveTask: (archive: "ARCHIVE_TASK", id: string) => void;
-	onTogglePinTask: (state: "TASK_INBOX" | "TASK_PINNED" | "TASK_ARCHIVED", id: string) => void;
+	onTogglePinTask: (
+		state: "TASK_INBOX" | "TASK_PINNED" | "TASK_ARCHIVED",
+		id: string
+	) => void;
 	onEditTitle: (title: string, id: string) => void;
 	onDeleteTask: (id: string) => void;
 }
 
-export function Task (props: TaskProps) {
+export function Task(props: TaskProps) {
 	const {
 		task: { id, title, state },
 		onArchiveTask,
@@ -20,51 +26,61 @@ export function Task (props: TaskProps) {
 	} = props;
 
 	return (
-		<div className={`list-item ${state}`} role="listitem" aria-label={`task-${id}`}>
-			<label htmlFor="checked" aria-label={`archiveTask-${id}`} className="checkbox">
-				<input
-					type="checkbox"
-					disabled={true}
-					name="checked"
-					id={`archiveTask-${id}`}
-					checked={state === "TASK_ARCHIVED"}
-				/>
-				<span
-					className="checkbox-custom"
-					onClick={() => onArchiveTask("ARCHIVE_TASK", id)}
-					role="button"
-					aria-label={`archiveButton-${id}`}
-				/>
-			</label>
+		<Group
+			align="center"
+			justify="space-between"
+			wrap="nowrap"
+			gap="xl"
+			role="listitem"
+			aria-label={`task-${id}`}
+		>
+			<Checkbox
+				type="checkbox"
+				aria-label={`archiveTask-${id}`}
+				onChange={() => onArchiveTask("ARCHIVE_TASK", id)}
+				name="checked"
+				id={`archiveTask-${id}`}
+				checked={state === "TASK_ARCHIVED"}
+				pl={10}
+			/>
 
-			<label htmlFor="title" aria-label={title} className="title">
-				<input
-					type="text"
-					value={title}
-					name="title"
-					placeholder="Input title"
-					style={{ textOverflow: "ellipsis" }}
-					onChange={(e) => onEditTitle(e.target.value, id)}
-				/>
-			</label>
-			<button
-				aria-label="delete"
-				className="delete-button"
+			<TextInput
+				variant="unstyled"
+				type="text"
+				value={title}
+				name="title"
+				placeholder="Input title"
+				style={{
+					textOverflow: "ellipsis",
+					width: "100%",
+				}}
+				onChange={(e) => onEditTitle(e.target.value, id)}
+			/>
+			<ActionIcon
+				variant="transparent"
 				onClick={() => onDeleteTask(id)}
+				aria-label="delete"
 			>
-				<span className="icon-trash" />
-			</button>
+				<IconTrash
+					style={{ width: "70%", height: "70%" }}
+					stroke={1.5}
+				/>
+			</ActionIcon>
 			{state !== "TASK_ARCHIVED" && (
-				<button
-					className="pin-button"
+				<ActionIcon
+					variant="transparent"
 					onClick={() => onTogglePinTask(state, id)}
 					id={`pinTask-${id}`}
 					aria-label={state === "TASK_PINNED" ? "unpin" : "pin"}
 					key={`pinTask-${id}`}
+					mr={10}
 				>
-					<span className={`icon-star`} />
-				</button>
+					<IconStar
+						style={{ width: "70%", height: "70%" }}
+						stroke={1.5}
+					/>
+				</ActionIcon>
 			)}
-		</div>
+		</Group>
 	);
 }
