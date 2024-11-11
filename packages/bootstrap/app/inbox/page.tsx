@@ -1,8 +1,7 @@
 "use client";
 
 import { Bootstrap } from "../../src/";
-import { Login } from "./form";
-import { useAuth } from "../inbox/auth/";
+import { Inbox } from "../../page/inbox/box";
 
 const conf = {
 	application: {
@@ -12,12 +11,10 @@ const conf = {
 	},
 };
 
-export function LoginPage() {
-	const [, logIn] = useAuth();
-
+export default function InboxPage() {
 	return (
 		<Bootstrap conf={conf}>
-			<Login onLogIn={logIn} />
+			<Inbox />
 		</Bootstrap>
 	);
 }

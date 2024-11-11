@@ -1,29 +1,32 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import * as React from "react";
 import { Bootstrap } from "../../src/";
-import { Login } from "../login";
-import { useAuth } from "./auth";
+import { useAuth } from "../inbox/auth/";
 import { Inbox } from "./box";
 
 const conf = {
 	application: {
 		description: "This is a description for a mock application.",
-		id: "rando",
-		name: "Rando",
+		id: "bootstrap-app",
+		name: "Bootstrap App",
 	},
 };
 
-export function InboxPage () {
-	const [user, logIn] = useAuth();
+export function InboxPage() {
+	const [user] = useAuth();
+	const router = useRouter();
 
-	if (user?.token) {
-		return (
-			<Bootstrap conf={conf}>
-				<Inbox />;
-			</Bootstrap>
-		);
-	}
+	React.useEffect(() => {
+		if (!user?.token) {
+			router.push("/login");
+		}
+	}, [user?.token]);
 
-	return <Login onLogIn={logIn} />;
+	return (
+		<Bootstrap conf={conf}>
+			<Inbox />
+		</Bootstrap>
+	);
 }

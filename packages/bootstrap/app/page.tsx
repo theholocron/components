@@ -1,8 +1,7 @@
 "use client";
 
-import { Index, Login } from "../page/";
-console.log({ Index, Login })
+import { Index } from "../page/";
 
-export default function IndexPage () {
+export default function IndexPage() {
 	return <Index />;
 }

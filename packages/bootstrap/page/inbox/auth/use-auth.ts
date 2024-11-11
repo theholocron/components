@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import * as React from "react";
 
 export interface AuthOptions {
@@ -10,7 +11,6 @@ export interface AuthOptions {
 export interface User {
 	id: string;
 	name: string;
-	[key: string]: any; // Allow any additional user properties
 }
 
 export interface AuthResponse {
@@ -47,11 +47,13 @@ export interface Credentials {
 
 export function useAuth(): [User | null, (credentials: Credentials) => void] {
 	const [user, dispatch] = React.useReducer(reducer, null);
+	const router = useRouter();
 
 	const logIn = ({ username, password }: Credentials) => {
 		authenticate({ body: JSON.stringify({ username, password }) })
 			.then(({ user }) => {
 				dispatch({ type: "LOG_IN", user });
+				router.push("/inbox");
 			})
 			.catch((error) => {
 				console.log(error);

@@ -13,11 +13,8 @@ export interface LoadingProps extends WithChildren {
 	loader: React.ElementType;
 }
 
-export function Provider (props: LoadingProps) {
-	const {
-		children,
-		loader: Loader,
-	} = props;
+export function Provider(props: LoadingProps) {
+	const { children, loader: Loader } = props;
 
 	const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -25,7 +22,7 @@ export function Provider (props: LoadingProps) {
 		setIsLoading(state);
 	}, []);
 
-	const value = React.useMemo(() => ({ isLoading, setLoading }), [isLoading, setLoading]);
+	const value = React.useMemo(() => ({ isLoading, setLoading }), [isLoading]);
 
 	return (
 		<Context.Provider value={value}>
@@ -35,7 +32,7 @@ export function Provider (props: LoadingProps) {
 }
 Provider.displayName = "@theholocron/bootstrap/Loading";
 
-export function useLoading (): ILoading {
+export function useLoading(): ILoading {
 	const context = React.useContext(Context);
 
 	if (context === undefined) {

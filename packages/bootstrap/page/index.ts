@@ -1,2 +1,2 @@
 export { InboxPage as Index } from "./inbox/";
-export { Login } from "./login/";
+export { LoginPage as Login } from "./login/";
