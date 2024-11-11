@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, findByRole, within } from "@storybook/test";
 import { http, HttpResponse } from "msw";
 
