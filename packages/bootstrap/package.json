@@ -1,0 +1,98 @@
+{
+  "name": "@theholocron/bootstrap",
+  "version": "0.0.0",
+  "description": "A set of components to bootstrap an application.",
+  "homepage": "https://github.com/theholocron/bootstrap#readme",
+  "bugs": "https://github.com/theholocron/bootstrap/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theholocron/bootstrap.git"
+  },
+  "license": "GPL-3.0",
+  "author": "Newton Koumantzelis",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/bootstrap.es.js",
+      "require": "./dist/bootstrap.cjs.js"
+    },
+    "./style": "./dist/style.css"
+  },
+  "main": "dist/bootstrap.cjs.js",
+  "module": "dist/bootstrap.es.js",
+  "types": "dist/index.d.ts",
+  "style": "dist/style.css",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "next build",
+    "build:storybook": "storybook build --output-dir docs",
+    "dev": "next dev",
+    "lint": "docker run -e LOG_LEVEL=DEBUG -e RUN_LOCAL=true -v .:/tmp/lint --rm ghcr.io/super-linter/super-linter:latest",
+    "start": "next start",
+    "start:storybook": "storybook dev -p 6006",
+    "test": "vitest",
+    "test:cypress": "cypress open",
+    "test:storybook": "test-storybook --coverage"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.13.5",
+    "@mantine/hooks": "^7.13.5",
+    "@theholocron/utils-location": "^0.2.0",
+    "@theholocron/utils-misc": "^0.4.0",
+    "@theholocron/utils-storage": "^0.3.0",
+    "@theholocron/utils-string": "^0.1.0"
+  },
+  "devDependencies": {
+    "@codesandbox/storybook-addon": "^0.2.0",
+    "@next/bundle-analyzer": "^15.0.3",
+    "@storybook/nextjs": "^8.2.5",
+    "@theholocron/eslint-config": "^3.5.1",
+    "@theholocron/jest-config": "^3.5.1",
+    "@theholocron/prettier-config": "^3.5.1",
+    "@theholocron/storybook-config": "^3.5.1",
+    "@theholocron/stylelint-config": "^3.5.1",
+    "@theholocron/tsconfig": "^3.5.1",
+    "@tsconfig/next": "^2.0.3",
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.2",
+    "alexjs": "^1.0.0",
+    "next": "^14",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^5.4.9"
+  },
+  "peerDependencies": {
+    "next": "^14",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "packageManager": "npm@9.5.0",
+  "engines": {
+    "node": ">=20",
+    "npm": ">=10"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "./dist/**/*.css",
+        "maxSize": "50 kB"
+      },
+      {
+        "path": "./dist/**/*.js",
+        "maxSize": "100 kB"
+      }
+    ]
+  },
+  "msw": {
+    "workerDirectory": "public"
+  },
+  "releases": "https://github.com/theholocron/bootstrap/releases",
+  "wiki": "https://github.com/theholocron/bootstrap/wiki"
+}

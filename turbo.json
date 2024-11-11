@@ -3,10 +3,12 @@
   "tasks": {
     "build": {},
     "build:storybook": {},
+    "dev": {},
     "lint": {},
-    "release": {},
     "start": {},
+    "start:storybook": {},
     "test": {},
+    "test:cypress": {},
     "test:storybook": {}
   }
 }

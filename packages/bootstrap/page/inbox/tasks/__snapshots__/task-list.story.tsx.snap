@@ -1,0 +1,661 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskList Default smoke-test 1`] = `
+<div class="list-items"
+     data-testid="success"
+     role="list"
+     aria-label="tasks"
+>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-1"
+  >
+    <label for="checked"
+           aria-label="archiveTask-1"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-1"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-1"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Build a date picker"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Build a date picker"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-1"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-2"
+  >
+    <label for="checked"
+           aria-label="archiveTask-2"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-2"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-2"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="QA dropdown"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="QA dropdown"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-2"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-3"
+  >
+    <label for="checked"
+           aria-label="archiveTask-3"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-3"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-3"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Write a schema for account avatar component"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Write a schema for account avatar component"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-3"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-4"
+  >
+    <label for="checked"
+           aria-label="archiveTask-4"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-4"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-4"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Export logo"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Export logo"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-4"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-5"
+  >
+    <label for="checked"
+           aria-label="archiveTask-5"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-5"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-5"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Fix bug in input error state"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Fix bug in input error state"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-5"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-6"
+  >
+    <label for="checked"
+           aria-label="archiveTask-6"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-6"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-6"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Draft monthly blog to customers"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Draft monthly blog to customers"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-6"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`TaskList Empty smoke-test 1`] = `
+<div class="list-items"
+     data-testid="empty"
+>
+  <div class="wrapper-message">
+    <span class="icon-check">
+    </span>
+    <p class="title-message">
+      You have no tasks
+    </p>
+    <p class="subtitle-message">
+      Sit back and relax
+    </p>
+  </div>
+</div>
+`;
+
+exports[`TaskList Loading smoke-test 1`] = `
+<div class="list-items"
+     data-testid="loading"
+>
+  <div class="loading-item">
+    <span class="glow-checkbox">
+    </span>
+    <span class="glow-text">
+      <span>
+        Loading
+      </span>
+      <span>
+        cool
+      </span>
+      <span>
+        state
+      </span>
+    </span>
+  </div>
+  <div class="loading-item">
+    <span class="glow-checkbox">
+    </span>
+    <span class="glow-text">
+      <span>
+        Loading
+      </span>
+      <span>
+        cool
+      </span>
+      <span>
+        state
+      </span>
+    </span>
+  </div>
+  <div class="loading-item">
+    <span class="glow-checkbox">
+    </span>
+    <span class="glow-text">
+      <span>
+        Loading
+      </span>
+      <span>
+        cool
+      </span>
+      <span>
+        state
+      </span>
+    </span>
+  </div>
+  <div class="loading-item">
+    <span class="glow-checkbox">
+    </span>
+    <span class="glow-text">
+      <span>
+        Loading
+      </span>
+      <span>
+        cool
+      </span>
+      <span>
+        state
+      </span>
+    </span>
+  </div>
+  <div class="loading-item">
+    <span class="glow-checkbox">
+    </span>
+    <span class="glow-text">
+      <span>
+        Loading
+      </span>
+      <span>
+        cool
+      </span>
+      <span>
+        state
+      </span>
+    </span>
+  </div>
+  <div class="loading-item">
+    <span class="glow-checkbox">
+    </span>
+    <span class="glow-text">
+      <span>
+        Loading
+      </span>
+      <span>
+        cool
+      </span>
+      <span>
+        state
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`TaskList WithPinnedTasks smoke-test 1`] = `
+<div class="list-items"
+     data-testid="success"
+     role="list"
+     aria-label="tasks"
+>
+  <div class="list-item TASK_PINNED"
+       role="listitem"
+       aria-label="task-6"
+  >
+    <label for="checked"
+           aria-label="archiveTask-6"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-6"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-6"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Draft monthly blog to customers"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Draft monthly blog to customers"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-6"
+            aria-label="unpin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-1"
+  >
+    <label for="checked"
+           aria-label="archiveTask-1"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-1"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-1"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Build a date picker"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Build a date picker"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-1"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-2"
+  >
+    <label for="checked"
+           aria-label="archiveTask-2"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-2"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-2"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="QA dropdown"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="QA dropdown"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-2"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-3"
+  >
+    <label for="checked"
+           aria-label="archiveTask-3"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-3"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-3"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Write a schema for account avatar component"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Write a schema for account avatar component"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-3"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-4"
+  >
+    <label for="checked"
+           aria-label="archiveTask-4"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-4"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-4"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Export logo"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Export logo"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-4"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-5"
+  >
+    <label for="checked"
+           aria-label="archiveTask-5"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-5"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-5"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Fix bug in input error state"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Fix bug in input error state"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-5"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+</div>
+`;
