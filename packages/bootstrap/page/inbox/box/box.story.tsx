@@ -1,38 +1,41 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import { expect, userEvent, findByRole, within } from "@storybook/test";
 import { http, HttpResponse } from "msw";
 
 import { Default as TaskListDefault } from "../tasks/task-list.story";
 import { Inbox } from "./box";
 
-export default {
+const meta: Meta<typeof Inbox> = {
 	component: Inbox,
 	title: "Inbox",
 };
+export default meta;
+type Story = StoryObj<typeof Inbox>;
 
-export const Default = {
+export const Default: Story = {
 	parameters: {
 		msw: {
 			handlers: [
-				http.get("/tasks", () => HttpResponse.json(TaskListDefault.args)),
+				http.get("/tasks", () =>
+					HttpResponse.json(TaskListDefault.args)
+				),
 			],
 		},
 	},
 };
 
-export const Error = {
+export const Error: Story = {
 	args: {
 		error: "Something",
 	},
 	parameters: {
 		msw: {
-			handlers: [
-				http.get("/tasks", () => HttpResponse.json([])),
-			],
+			handlers: [http.get("/tasks", () => HttpResponse.json([]))],
 		},
 	},
 };
 
-export const PinTask = {
+export const PinTask: Story = {
 	parameters: {
 		...Default.parameters,
 	},
@@ -42,7 +45,9 @@ export const PinTask = {
 
 		const itemToPin = await getTask("task-4");
 		// Find the pin button
-		const pinButton = await findByRole(itemToPin, "button", { name: "pin" });
+		const pinButton = await findByRole(itemToPin, "button", {
+			name: "pin",
+		});
 		// Click the pin button
 		await userEvent.click(pinButton);
 		// Check that the pin button is now a unpin button
@@ -53,7 +58,7 @@ export const PinTask = {
 	},
 };
 
-export const ArchiveTask = {
+export const ArchiveTask: Story = {
 	parameters: {
 		...Default.parameters,
 	},
@@ -69,7 +74,7 @@ export const ArchiveTask = {
 	},
 };
 
-export const EditTask = {
+export const EditTask: Story = {
 	parameters: {
 		...Default.parameters,
 	},
@@ -80,11 +85,13 @@ export const EditTask = {
 		const itemToEdit = await getTask("task-5");
 		const taskInput = await findByRole(itemToEdit, "textbox");
 		await userEvent.type(taskInput, " and disabled state");
-		await expect(taskInput.value).toBe("Fix bug in input error state and disabled state");
+		await expect(taskInput.value).toBe(
+			"Fix bug in input error state and disabled state"
+		);
 	},
 };
 
-export const DeleteTask = {
+export const DeleteTask: Story = {
 	parameters: {
 		...Default.parameters,
 	},
