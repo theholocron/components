@@ -11,10 +11,11 @@ import {
 } from "@mantine/core";
 import * as React from "react";
 import { useLocation, useKonami, useStorage } from "../../src/";
+import type { Credentials } from "../inbox/auth";
 import { AnimatedImage } from "./konami";
 
 export interface LoginFormProps extends React.HTMLProps<HTMLFormElement> {
-	onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+	onSubmit: (formData: Credentials) => void;
 }
 
 export function LoginForm(props: LoginFormProps) {
@@ -25,18 +26,25 @@ export function LoginForm(props: LoginFormProps) {
 			className="login-form-container"
 			onSubmit={(event) => {
 				event.preventDefault();
-				const elementsArray = Array.from(event.currentTarget.elements);
+				const elementsArray = Array.from(
+					event.currentTarget.elements
+				) as HTMLInputElement[];
 				const formData = elementsArray.reduce(
-					(acc: { [key: string]: string }, elem: object) => {
-						if (elem.id) {
-							acc[elem.id] = elem.value;
+					(acc: Partial<Credentials>, elem: HTMLInputElement) => {
+						if (elem.name) {
+							acc[elem.name as keyof Credentials] = elem.value;
 						}
 						return acc;
 					},
-					{}
+					{} as Partial<Credentials>
 				);
 
-				onSubmit(formData);
+				// Ensure `formData` includes both `username` and `password` before calling `onSubmit`
+				if (formData.username && formData.password) {
+					onSubmit(formData as Credentials); // Type assertion to `Credentials`
+				} else {
+					console.error("Both username and password are required.");
+				}
 			}}
 			{...rest}
 		>
@@ -67,7 +75,7 @@ export function LoginForm(props: LoginFormProps) {
 }
 
 export interface LoginProps {
-	onLogIn: (formData: { [key: string]: string }) => void;
+	onLogIn: (credentials: Credentials) => void;
 }
 
 export function Login(props: LoginProps) {
