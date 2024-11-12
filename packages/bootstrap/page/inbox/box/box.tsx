@@ -8,7 +8,7 @@ export interface InboxProps {
 	error?: string;
 }
 
-type TaskState = "TASK_PINNED" | "TASK_INBOX";
+type TaskState = "TASK_PINNED" | "TASK_INBOX" | "TASK_ARCHIVED";
 
 export function Inbox(props: InboxProps) {
 	const { error = "" } = props;
