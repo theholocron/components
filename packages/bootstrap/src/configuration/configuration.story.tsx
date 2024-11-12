@@ -13,7 +13,7 @@ const meta = {
 	},
 	component: Configuration.Provider,
 	title: "Configuration",
-} satisfies Meta<typeof Configuration>;
+} satisfies Meta<typeof Configuration.Provider>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
