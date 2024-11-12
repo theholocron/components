@@ -1,7 +1,7 @@
 "use client";
 
-import { createTheme } from "@mantine/core";
+import { createTheme, type MantineTheme } from "@mantine/core";
 
-export const theme = createTheme({
+export const theme: MantineTheme = createTheme({
 	/* mantine theme overrides */
-})
+});
