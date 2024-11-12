@@ -45,7 +45,7 @@ export const WithPinnedTasks: Story = {
 				title: "Draft monthly blog to customers",
 				state: "TASK_PINNED",
 			},
-			...Default.args.tasks.slice(0, 5),
+			...(Default.args || { tasks: [] }).tasks.slice(0, 5),
 		],
 	},
 };
