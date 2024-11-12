@@ -14,7 +14,7 @@ import { useLocation, useKonami, useStorage } from "../../src/";
 import { AnimatedImage } from "./konami";
 
 export interface LoginFormProps extends React.HTMLProps<HTMLFormElement> {
-	onSubmit: (formData: { [key: string]: string }) => void;
+	onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export function LoginForm(props: LoginFormProps) {
