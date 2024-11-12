@@ -9,9 +9,10 @@ import { theme } from "../theme";
 import type { WithChildren } from "../type";
 import { Container } from "./container";
 
-export interface BootstrapProps extends WithChildren {
+export interface BootstrapProps
+	extends WithChildren,
+		Pick<LoadingProps, "loader"> {
 	conf: IConfiguration;
-	loader: Pick<LoadingProps, "loader">;
 }
 
 export function Bootstrap(props: BootstrapProps) {
