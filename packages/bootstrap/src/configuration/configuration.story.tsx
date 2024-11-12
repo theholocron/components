@@ -43,6 +43,9 @@ export const Default = {
 
 // Attempt to use the hook without provider
 export const Error = {
+	args: {
+		conf: MockConfiguration.mockConf,
+	},
 	render: () => {
 		const Component = () => {
 			try {
