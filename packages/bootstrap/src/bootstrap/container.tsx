@@ -1,4 +1,5 @@
 import * as React from "react";
+import { type IConfiguration } from "../configuration/";
 import { useEnvironment } from "../environment/";
 import { useStorage } from "../storage/";
 import type { WithChildren } from "../type";
@@ -7,7 +8,7 @@ export interface ContainerProps extends WithChildren {
 	conf: IConfiguration;
 }
 
-export function Container (props: ContainerProps) {
+export function Container(props: ContainerProps) {
 	const environment = useEnvironment();
 	const storage = useStorage();
 
