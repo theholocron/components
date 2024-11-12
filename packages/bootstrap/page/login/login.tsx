@@ -17,7 +17,7 @@ export function LoginPage() {
 	const [, logIn] = useAuth();
 
 	return (
-		<Bootstrap conf={conf} loader={Loader}>
+		<Bootstrap conf={conf} loader={<Loader />}>
 			<Login onLogIn={logIn} />
 		</Bootstrap>
 	);

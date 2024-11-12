@@ -14,7 +14,7 @@ const conf = {
 
 export default function InboxPage() {
 	return (
-		<Bootstrap conf={conf} loader={Loader}>
+		<Bootstrap conf={conf} loader={<Loader />}>
 			<Inbox />
 		</Bootstrap>
 	);

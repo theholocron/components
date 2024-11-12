@@ -3,12 +3,12 @@ import { expect, within } from "@storybook/test";
 import * as MockEnvironment from "./environment.mock";
 import Environment, { useEnvironment } from "./index";
 
-const meta: Meta<typeof Environment> = {
+const meta = {
 	component: Environment.Provider,
 	title: "Environment",
-};
+} satisfies Meta<typeof Environment>;
 export default meta;
-type Story = StoryObj<typeof Environment>;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	render: (args) => (
@@ -27,10 +27,10 @@ export const Default: Story = {
 			"Current Environment: development"
 		); // Change this based on your mocked environment
 	},
-};
+} satisfies Story;
 
 // Attempt to use the hook without provider
-export const Error: Story = {
+export const Error = {
 	render: () => {
 		const Component = () => {
 			try {
@@ -51,4 +51,4 @@ export const Error: Story = {
 			"useEnvironment must be used within Environment.Provider!"
 		);
 	},
-};
+} satisfies Story;

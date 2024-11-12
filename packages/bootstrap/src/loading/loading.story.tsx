@@ -4,7 +4,7 @@ import { delay, http, HttpResponse } from "msw";
 import * as MockLoading from "./loading.mock";
 import Loading, { useLoading } from "./index";
 
-const meta: Meta<typeof Loading> = {
+const meta = {
 	argTypes: {
 		loader: {
 			control: "object",
@@ -14,11 +14,11 @@ const meta: Meta<typeof Loading> = {
 	},
 	component: Loading.Provider,
 	title: "Loading",
-};
+} satisfies Meta<typeof Loading>;
 export default meta;
-type Story = StoryObj<typeof Loading>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
 	args: {
 		loader: MockLoading.Loader,
 	},
@@ -54,7 +54,7 @@ export const Default: Story = {
 		// Check that the loader is removed after loading
 		expect(loader).not.toBeInTheDocument();
 	},
-};
+} satisfies Story;
 
 // Attempt to use the hook without provider
 export const Error: Story = {
@@ -78,4 +78,4 @@ export const Error: Story = {
 			"useLoading must be used within Loading.Provider!"
 		);
 	},
-};
+} satisfies Story;

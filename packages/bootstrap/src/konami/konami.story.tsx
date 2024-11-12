@@ -4,14 +4,14 @@ import { konami } from "@theholocron/utils-misc";
 import Konami, { useKonami } from "./index";
 import * as MockKonami from "./konami.mock";
 
-const meta: Meta<typeof Konami> = {
+const meta = {
 	component: Konami.Provider,
 	title: "Konami",
-};
+} satisfies Meta<typeof Konami>;
 export default meta;
-type Story = StoryObj<typeof Bootstrap>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
 	render: () => (
 		<Konami.Provider>
 			<MockKonami.TestComponent />
@@ -31,10 +31,10 @@ export const Default: Story = {
 		// 3. Verify the updated state (Konami code has been entered)
 		await expect(component).toHaveTextContent("Entered");
 	},
-};
+} satisfies Story;
 
 // Attempt to use the hook without provider
-export const Error: Story = {
+export const Error = {
 	render: () => {
 		const Component = () => {
 			try {
@@ -55,4 +55,4 @@ export const Error: Story = {
 			"useKonami must be used within Konami.Provider!"
 		);
 	},
-};
+} satisfies Story;

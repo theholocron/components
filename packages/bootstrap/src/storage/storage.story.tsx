@@ -4,7 +4,7 @@ import * as MockConfiguration from "../configuration/configuration.mock";
 import Storage, { useStorage } from "./index";
 import * as MockStorage from "./storage.mock";
 
-const meta: Meta<typeof Storage> = {
+const meta = {
 	argTypes: {
 		conf: {
 			control: "object",
@@ -14,11 +14,11 @@ const meta: Meta<typeof Storage> = {
 	},
 	component: Storage.Provider,
 	title: "Storage",
-};
+} satisfies Meta<typeof Storage>;
 export default meta;
-type Story = StoryObj<typeof Storage>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
 	args: {
 		conf: MockConfiguration.mockConf.application,
 	},
@@ -54,10 +54,10 @@ export const Default: Story = {
 		const preElement = await canvas.queryByText(/"test": "value"/);
 		expect(preElement).not.toBeInTheDocument();
 	},
-};
+} satisfies Story;
 
 // Attempt to use the hook without provider
-export const Error: Story = {
+export const Error = {
 	render: () => {
 		const Component = () => {
 			try {
@@ -78,4 +78,4 @@ export const Error: Story = {
 			"useStorage must be used within Storage.Provider!"
 		);
 	},
-};
+} satisfies Story;

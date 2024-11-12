@@ -3,7 +3,7 @@ import { expect, within } from "@storybook/test";
 import * as MockConfiguration from "./configuration.mock";
 import Configuration, { useConfiguration } from "./index";
 
-const meta: Meta<typeof Configuration> = {
+const meta = {
 	argTypes: {
 		conf: {
 			control: "object",
@@ -13,19 +13,19 @@ const meta: Meta<typeof Configuration> = {
 	},
 	component: Configuration.Provider,
 	title: "Configuration",
-};
+} satisfies Meta<typeof Configuration>;
 export default meta;
-type Story = StoryObj<typeof Configuration>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-	args: {
-		conf: MockConfiguration.mockConf,
-	},
+export const Default = {
 	render: (args) => (
 		<Configuration.Provider {...args}>
 			<MockConfiguration.TestComponent />
 		</Configuration.Provider>
 	),
+	args: {
+		conf: MockConfiguration.mockConf,
+	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 
@@ -39,10 +39,10 @@ export const Default: Story = {
 		const appName = await canvas.findByText(/"name": "A Mock Application"/);
 		expect(appName).toBeInTheDocument();
 	},
-};
+} satisfies Story;
 
 // Attempt to use the hook without provider
-export const Error: Story = {
+export const Error = {
 	render: () => {
 		const Component = () => {
 			try {
@@ -63,34 +63,40 @@ export const Error: Story = {
 			"useConfiguration must be used within Configuration.Provider!"
 		);
 	},
-};
+} satisfies Story;
 
 // Fallback to ID when slug is not present
-export const FallbackSlug: Story = Default.bind({});
-FallbackSlug.args = {
-	conf: {
-		...MockConfiguration.mockConf,
-		application: {
-			...MockConfiguration.mockConf.application,
-			name: "",
-			id: "fallback-slug",
-			slug: "",
+export const FallbackSlug = {
+	args: {
+		conf: {
+			...MockConfiguration.mockConf,
+			application: {
+				...MockConfiguration.mockConf.application,
+				name: "",
+				id: "fallback-slug",
+				slug: "",
+			},
 		},
 	},
-};
-FallbackSlug.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-	const appName = await canvas.findByText(/"slug": "fallback-slug"/);
-	expect(appName).toBeInTheDocument();
-};
+	render: Default.render.bind({}),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const appName = await canvas.findByText(/"slug": "fallback-slug"/);
+		expect(appName).toBeInTheDocument();
+	},
+} satisfies Story;
 
 // Fallback when only ID is present
-export const FallbackTitle: Story = Default.bind({});
-FallbackTitle.args = {
-	conf: MockConfiguration.mockConf,
-};
-FallbackTitle.play = async ({ canvasElement }) => {
-	const canvas = within(canvasElement);
-	const appName = await canvas.findByText(/"title": "A Mock Application"/);
-	expect(appName).toBeInTheDocument();
-};
+export const FallbackTitle = {
+	args: {
+		conf: MockConfiguration.mockConf,
+	},
+	render: Default.render.bind({}),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const appName = await canvas.findByText(
+			/"title": "A Mock Application"/
+		);
+		expect(appName).toBeInTheDocument();
+	},
+} satisfies Story;

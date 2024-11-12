@@ -5,7 +5,7 @@ import { Default as StorageDefault } from "../storage/storage.story";
 import Location, { useLocation } from "./index";
 import { TestComponent } from "./location.mock";
 
-const meta: Meta<typeof Location> = {
+const meta = {
 	component: Location.Provider,
 	title: "Location",
 	decorators: [
@@ -15,20 +15,20 @@ const meta: Meta<typeof Location> = {
 			</Storage.Provider>
 		),
 	],
-};
+} satisfies Meta<typeof Location>;
 export default meta;
-type Story = StoryObj<typeof Location>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
 	render: () => (
 		<Location.Provider>
 			<TestComponent />
 		</Location.Provider>
 	),
-};
+} satisfies Story;
 
 // Attempt to use the hook without provider
-export const Error: Story = {
+export const Error = {
 	render: () => {
 		const Component = () => {
 			try {
@@ -49,37 +49,37 @@ export const Error: Story = {
 			"useLocation must be used within a Location.Provider!"
 		);
 	},
-};
+} satisfies Story;
 
-/**
- * Utility function for clearing storage in tests
- * @TODO: figure out how to test the following stories
+// Utility function for clearing storage in tests
+// @TODO: figure out how to test the following stories
+/*
 const clearStorage = () => {
 	const storage = useStorage();
 	storage.clear();
 };
 */
 
-export const PermissionDenied: Story = {
+export const PermissionDenied = {
 	render: () => (
 		<Location.Provider>
 			<TestComponent />
 		</Location.Provider>
 	),
-};
+} satisfies Story;
 
-export const CachedLocation: Story = {
+export const CachedLocation = {
 	render: () => (
 		<Location.Provider>
 			<TestComponent />
 		</Location.Provider>
 	),
-};
+} satisfies Story;
 
-export const LocationError: Story = {
+export const LocationError = {
 	render: () => (
 		<Location.Provider>
 			<TestComponent />
 		</Location.Provider>
 	),
-};
+} satisfies Story;

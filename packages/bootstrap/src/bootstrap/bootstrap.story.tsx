@@ -8,18 +8,18 @@ import LoadingStory from "../loading/loading.story";
 import * as MockBootstrap from "./bootstrap.mock";
 import { Bootstrap } from "./index";
 
-const meta: Meta<typeof Bootstrap> = {
+const meta = {
 	argTypes: {
 		conf: ConfigurationStory.argTypes,
 		loader: LoadingStory.argTypes,
 	},
 	component: Bootstrap,
 	title: "Bootstrap",
-};
+} satisfies Meta<typeof Bootstrap>;
 export default meta;
-type Story = StoryObj<typeof Bootstrap>;
+type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
 	args: {
 		conf: MockConfiguration.mockConf,
 		loader: MockLoading.Loader,
@@ -35,9 +35,9 @@ export const Default: Story = {
 		const childrenElement = await canvas.findByTestId("mock-configuration");
 		expect(childrenElement).toBeInTheDocument();
 	},
-};
+} satisfies Story;
 
-export const IsLoading: Story = {
+export const IsLoading = {
 	args: {
 		...Default.args,
 	},
@@ -54,4 +54,4 @@ export const IsLoading: Story = {
 		const childrenElement = await canvas.findByTestId("loader");
 		expect(childrenElement).toBeInTheDocument();
 	},
-};
+} satisfies Story;

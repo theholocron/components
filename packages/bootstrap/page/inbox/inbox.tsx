@@ -26,7 +26,7 @@ export function InboxPage() {
 	}, [user?.token]);
 
 	return (
-		<Bootstrap conf={conf} loader={Loader}>
+		<Bootstrap conf={conf} loader={<Loader />}>
 			<Inbox />
 		</Bootstrap>
 	);
