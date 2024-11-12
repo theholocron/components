@@ -1,22 +1,27 @@
 import * as React from "react";
 
-export interface Task {
+interface Task {
 	id: string;
 	title: string;
 	state: "TASK_INBOX" | "TASK_PINNED" | "TASK_ARCHIVED";
-	[key: string]: any; // Allow any additional properties
 }
 
 export interface TaskResponse {
 	tasks: Task[];
 }
 
-const getTasks = (options: RequestInit): Promise<TaskResponse> => fetch("/tasks", options).then((res) => res.json());
+const getTasks = (options: RequestInit): Promise<TaskResponse> =>
+	fetch("/tasks", options).then((res) => res.json());
 
-const updateTask = (tasks: Task[], id: string, updatedTask: Partial<Task>): Task[] =>
+const updateTask = (
+	tasks: Task[],
+	id: string,
+	updatedTask: Partial<Task>
+): Task[] =>
 	tasks.map((task) => (task.id === id ? { ...task, ...updatedTask } : task));
 
-const deleteTask = (tasks: Task[], id: string): Task[] => tasks.filter((task) => task.id !== id);
+const deleteTask = (tasks: Task[], id: string): Task[] =>
+	tasks.filter((task) => task.id !== id);
 
 export type TaskAction =
 	| { type: "UPDATE_TASKS"; tasks: Task[] }
