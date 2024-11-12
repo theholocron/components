@@ -10,7 +10,7 @@ const Context = React.createContext<ILoading | undefined>(undefined);
 Context.displayName = "@theholocron/bootstrap/Loading";
 
 export interface LoadingProps extends WithChildren {
-	loader: React.ReactElement;
+	loader: React.ReactElement | JSX.Element;
 }
 
 export function Provider(props: LoadingProps) {
