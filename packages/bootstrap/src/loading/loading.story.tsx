@@ -7,8 +7,6 @@ import Loading, { useLoading } from "./index";
 const meta = {
 	argTypes: {
 		loader: {
-			control: "object",
-			defaultValue: MockLoading.Loader,
 			description: "Loader component",
 		},
 	},

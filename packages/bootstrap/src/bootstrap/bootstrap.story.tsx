@@ -3,7 +3,7 @@ import { expect, within } from "@storybook/test";
 import * as React from "react";
 import * as MockConfiguration from "../configuration/configuration.mock";
 import ConfigurationStory from "../configuration/configuration.story";
-import * as MockLoading from "../loading/loading.mock";
+// import * as MockLoading from "../loading/loading.mock";
 import LoadingStory from "../loading/loading.story";
 import * as MockBootstrap from "./bootstrap.mock";
 import { Bootstrap } from "./index";
@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 export const Default = {
 	args: {
 		conf: MockConfiguration.mockConf,
-		loader: MockLoading.Loader,
+		loader: () => <div data-testid="loader">loading…</div>,
 	},
 	render: (args) => (
 		<Bootstrap {...args}>
