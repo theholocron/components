@@ -14,7 +14,7 @@ import { useLocation, useKonami, useStorage } from "../../src/";
 import type { Credentials } from "../inbox/auth";
 import { AnimatedImage } from "./konami";
 
-export interface LoginFormProps extends React.HTMLProps<HTMLFormElement> {
+export interface LoginFormProps {
 	onSubmit: (formData: Credentials) => void;
 }
 
