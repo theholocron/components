@@ -12,10 +12,10 @@ import { Container } from "./container";
 
 export interface BootstrapProps extends WithChildren {
 	conf: IConfiguration;
-	loader: React.ReactElementType;
+	loader: React.ReactElement;
 }
 
-export function Bootstrap (props: BootstrapProps) {
+export function Bootstrap(props: BootstrapProps) {
 	return (
 		<Configuration.Provider conf={props.conf}>
 			<Environment.Provider>
