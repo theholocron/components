@@ -87,10 +87,15 @@ export const EditTask: Story = {
 
 		const itemToEdit = await getTask("task-5");
 		const taskInput = await findByRole(itemToEdit, "textbox");
-		await userEvent.type(taskInput, " and disabled state");
-		await expect(taskInput.value).toBe(
-			"Fix bug in input error state and disabled state"
-		);
+		if (
+			taskInput instanceof HTMLInputElement ||
+			taskInput instanceof HTMLTextAreaElement
+		) {
+			await userEvent.type(taskInput, " and disabled state");
+			await expect(taskInput.value).toBe(
+				"Fix bug in input error state and disabled state"
+			);
+		}
 	},
 };
 
