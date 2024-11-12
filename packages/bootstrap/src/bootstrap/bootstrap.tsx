@@ -1,9 +1,8 @@
 import { MantineProvider } from "@mantine/core";
-import * as React from "react";
 import Configuration, { type IConfiguration } from "../configuration/";
 import Environment from "../environment/";
 import Konami from "../konami/";
-import Loading from "../loading/";
+import Loading, { type LoadingProps } from "../loading/";
 import Location from "../location/";
 import Storage from "../storage/";
 import { theme } from "../theme";
@@ -12,7 +11,7 @@ import { Container } from "./container";
 
 export interface BootstrapProps extends WithChildren {
 	conf: IConfiguration;
-	loader: React.ReactElement;
+	loader: Pick<LoadingProps, "loader">;
 }
 
 export function Bootstrap(props: BootstrapProps) {
