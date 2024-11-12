@@ -80,22 +80,17 @@ export const EditTask: Story = {
 	parameters: {
 		...Default.parameters,
 	},
-	play: async ({ canvasElement }: { canvasElement: HTMLTextAreaElement }) => {
+	play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 		const canvas = within(canvasElement);
 		const getTask = (id: string) =>
 			canvas.findByRole("listitem", { name: id });
 
 		const itemToEdit = await getTask("task-5");
 		const taskInput = await findByRole(itemToEdit, "textbox");
-		if (
-			taskInput instanceof HTMLInputElement ||
-			taskInput instanceof HTMLTextAreaElement
-		) {
-			await userEvent.type(taskInput, " and disabled state");
-			await expect(taskInput.value).toBe(
-				"Fix bug in input error state and disabled state"
-			);
-		}
+		await userEvent.type(taskInput, " and disabled state");
+		await expect(taskInput.value).toBe(
+			"Fix bug in input error state and disabled state"
+		);
 	},
 };
 
