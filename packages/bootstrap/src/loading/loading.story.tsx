@@ -20,7 +20,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default = {
 	args: {
-		loader: MockLoading.Loader,
+		loader: <MockLoading.Loader />,
 	},
 	parameters: {
 		msw: {

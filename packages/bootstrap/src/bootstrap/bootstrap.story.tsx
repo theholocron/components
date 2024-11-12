@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 export const Default = {
 	args: {
 		conf: MockConfiguration.mockConf,
-		loader: MockLoading.Loader,
+		loader: <MockLoading.Loader />,
 	},
 	render: (args) => (
 		<Bootstrap {...args}>
