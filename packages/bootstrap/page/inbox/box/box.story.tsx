@@ -80,7 +80,7 @@ export const EditTask: Story = {
 	parameters: {
 		...Default.parameters,
 	},
-	play: async ({ canvasElement }) => {
+	play: async ({ canvasElement }: { canvasElement: HTMLTextAreaElement }) => {
 		const canvas = within(canvasElement);
 		const getTask = (id: string) =>
 			canvas.findByRole("listitem", { name: id });
