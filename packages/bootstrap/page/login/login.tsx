@@ -1,6 +1,7 @@
 "use client";
 
 import { Bootstrap } from "../../src/";
+import { Loader } from "../../src/loading/loading.mock";
 import { Login } from "./form";
 import { useAuth } from "../inbox/auth/";
 
@@ -16,7 +17,7 @@ export function LoginPage() {
 	const [, logIn] = useAuth();
 
 	return (
-		<Bootstrap conf={conf}>
+		<Bootstrap conf={conf} loader={Loader}>
 			<Login onLogIn={logIn} />
 		</Bootstrap>
 	);
