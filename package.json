@@ -46,11 +46,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
-  },
   "releases": "https://github.com/theholocron/components/releases",
   "wiki": "https://github.com/theholocron/components/wiki"
 }
