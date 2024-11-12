@@ -23,8 +23,11 @@ export function Inbox(props: InboxProps) {
 	const [tasks, dispatch] = useTasks();
 
 	// Archive or move the task back to inbox
-	const archiveTask = (archive: boolean, id: string) => {
-		dispatch({ type: archive ? "ARCHIVE_TASK" : "INBOX_TASK", id });
+	const archiveTask = (
+		actionType: "ARCHIVE_TASK" | "INBOX_TASK",
+		id: string
+	) => {
+		dispatch({ type: actionType, id });
 	};
 
 	// Delete task by id
