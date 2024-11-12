@@ -41,7 +41,8 @@ export const PinTask: Story = {
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		const getTask = (id) => canvas.findByRole("listitem", { name: id });
+		const getTask = (id: string) =>
+			canvas.findByRole("listitem", { name: id });
 
 		const itemToPin = await getTask("task-4");
 		// Find the pin button
@@ -64,7 +65,8 @@ export const ArchiveTask: Story = {
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		const getTask = (id) => canvas.findByRole("listitem", { name: id });
+		const getTask = (id: string) =>
+			canvas.findByRole("listitem", { name: id });
 
 		const itemToArchive = await getTask("task-2");
 		const archiveButton = await findByRole(itemToArchive, "button", {
@@ -80,7 +82,8 @@ export const EditTask: Story = {
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		const getTask = (id) => canvas.findByRole("listitem", { name: id });
+		const getTask = (id: string) =>
+			canvas.findByRole("listitem", { name: id });
 
 		const itemToEdit = await getTask("task-5");
 		const taskInput = await findByRole(itemToEdit, "textbox");
@@ -97,7 +100,8 @@ export const DeleteTask: Story = {
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		const getTask = (id) => canvas.findByRole("listitem", { name: id });
+		const getTask = (id: string) =>
+			canvas.findByRole("listitem", { name: id });
 
 		const itemToDelete = await getTask("task-1");
 		const deleteButton = await findByRole(itemToDelete, "button", {

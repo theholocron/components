@@ -1,6 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/react";
 import { Task } from "./task";
 
-export default {
+const meta: Meta<typeof Task> = {
 	component: Task,
 	title: "Task",
 	argTypes: {
@@ -10,8 +11,10 @@ export default {
 		onDeleteTask: { action: "onDeleteTask" },
 	},
 };
+export default meta;
+type Story = StoryObj<typeof Task>;
 
-export const Default = {
+export const Default: Story = {
 	render: (args) => (
 		<ul>
 			<Task {...args} />
@@ -26,7 +29,7 @@ export const Default = {
 	},
 };
 
-export const Pinned = {
+export const Pinned: Story = {
 	render: (args) => (
 		<ul>
 			<Task {...args} />
@@ -41,7 +44,7 @@ export const Pinned = {
 	},
 };
 
-export const Archived = {
+export const Archived: Story = {
 	render: (args) => (
 		<ul>
 			<Task {...args} />
@@ -56,14 +59,9 @@ export const Archived = {
 	},
 };
 
-const longTitleString = `This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`;
+const longTitleString: string = `This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!`;
 
-export const LongTitle = {
-	render: (args) => (
-		<ul>
-			<Task {...args} />
-		</ul>
-	),
+export const LongTitle: Story = {
 	args: {
 		task: {
 			id: "4",
@@ -71,4 +69,9 @@ export const LongTitle = {
 			state: "TASK_INBOX",
 		},
 	},
+	render: (args) => (
+		<ul>
+			<Task {...args} />
+		</ul>
+	),
 };
