@@ -11,6 +11,11 @@ export type TLocation = {
 	isLoading: boolean;
 };
 
+type CachedLocationData = {
+	coords: IGeolocationCoordinates;
+	timestamp: number;
+};
+
 const Context = React.createContext<TLocation | undefined>(undefined);
 Context.displayName = "@theholocron/bootstrap/Location";
 
