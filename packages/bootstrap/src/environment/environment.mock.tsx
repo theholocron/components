@@ -1,8 +1,11 @@
-import * as React from "react";
-import { useEnvironment } from "./environment";
+import { useEnvironment } from "./index.ts";
 
-export function TestComponent () {
+export function TestComponent() {
 	const environment = useEnvironment();
 
-	return <div data-testid="environment-display">Current Environment: {environment}</div>;
+	return (
+		<div data-testid="environment-display">
+			Current Environment: {environment}
+		</div>
+	);
 }

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, within } from "@storybook/test";
-import * as MockEnvironment from "./environment.mock";
-import Environment, { useEnvironment } from "./index";
+import * as MockEnvironment from "./environment.mock.tsx";
+import Environment, { useEnvironment } from "./index.ts";
 
 const meta = {
 	component: Environment.Provider,

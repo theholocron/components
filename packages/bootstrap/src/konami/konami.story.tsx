@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
 import { konami } from "@theholocron/utils-misc";
-import Konami, { useKonami } from "./index";
-import * as MockKonami from "./konami.mock";
+import Konami, { useKonami } from "./index.ts";
+import * as MockKonami from "./konami.mock.tsx";
 
 const meta = {
 	component: Konami.Provider,

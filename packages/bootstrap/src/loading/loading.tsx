@@ -1,5 +1,5 @@
 import * as React from "react";
-import type { WithChildren } from "../type";
+import type { WithChildren } from "../type.ts";
 
 export interface ILoading {
 	isLoading?: boolean;

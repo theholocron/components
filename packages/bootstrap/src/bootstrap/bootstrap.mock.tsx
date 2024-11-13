@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useLoading } from "../loading/";
+import { useLoading } from "../loading/index.ts";
 
-export function Loading () {
+export function Loading() {
 	const { setLoading } = useLoading();
 
 	React.useEffect(() => {

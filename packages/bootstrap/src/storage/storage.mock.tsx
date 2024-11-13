@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useStorage } from "./storage";
+import { useStorage } from "./index.ts";
 
-export function TestComponent () {
+export function TestComponent() {
 	const [isSending, setIsSending] = React.useState(true);
 	const [data, setData] = React.useState({});
 	const storage = useStorage();
@@ -22,10 +22,7 @@ export function TestComponent () {
 
 	return (
 		<div data-testid="mock-storage">
-			<button
-				onClick={handleClick}
-				type="button"
-			>
+			<button onClick={handleClick} type="button">
 				{isSending ? "Send to Storage" : "Remove from Storage"}
 			</button>
 			<pre>{JSON.stringify(data, null, 4)}</pre>

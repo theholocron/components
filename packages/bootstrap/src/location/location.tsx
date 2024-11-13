@@ -3,8 +3,8 @@ import {
 	type IGeolocationCoordinates,
 } from "@theholocron/utils-location";
 import * as React from "react";
-import { useStorage } from "../storage/";
-import type { WithChildren } from "../type";
+import { useStorage } from "../storage/index.ts";
+import type { WithChildren } from "../type.ts";
 
 export type TLocation = {
 	location: IGeolocationCoordinates | null;

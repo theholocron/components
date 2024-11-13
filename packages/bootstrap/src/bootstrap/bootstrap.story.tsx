@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, within } from "@storybook/test";
 import * as React from "react";
-import * as MockConfiguration from "../configuration/configuration.mock";
-import ConfigurationStory from "../configuration/configuration.story";
-import * as MockLoading from "../loading/loading.mock";
-import LoadingStory from "../loading/loading.story";
-import * as MockBootstrap from "./bootstrap.mock";
-import { Bootstrap } from "./index";
+import * as MockConfiguration from "../configuration/configuration.mock.tsx";
+import ConfigurationStory from "../configuration/configuration.story.tsx";
+import * as MockLoading from "../loading/loading.mock.tsx";
+import LoadingStory from "../loading/loading.story.tsx";
+import * as MockBootstrap from "./bootstrap.mock.tsx";
+import { Bootstrap } from "./index.ts";
 
 const meta = {
 	argTypes: {

@@ -1,7 +1,6 @@
-import * as React from "react";
-import { useLocation } from "./index";
+import { useLocation } from "./index.ts";
 
-export function TestComponent () {
+export function TestComponent() {
 	const { location, isLoading } = useLocation();
 
 	if (isLoading) return <div data-testid="loading">Loading...</div>;
@@ -17,5 +16,4 @@ export function TestComponent () {
 	}
 
 	return <div data-testid="no-location">No location available</div>;
-};
-
+}

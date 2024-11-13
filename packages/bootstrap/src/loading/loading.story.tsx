@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
 import { delay, http, HttpResponse } from "msw";
-import * as MockLoading from "./loading.mock";
-import Loading, { useLoading } from "./index";
+import * as MockLoading from "./loading.mock.tsx";
+import Loading, { useLoading } from "./index.ts";
 
 const meta = {
 	argTypes: {

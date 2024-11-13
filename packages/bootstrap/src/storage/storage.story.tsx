@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
-import * as MockConfiguration from "../configuration/configuration.mock";
-import Storage, { useStorage } from "./index";
-import * as MockStorage from "./storage.mock";
+import * as MockConfiguration from "../configuration/configuration.mock.tsx";
+import Storage, { useStorage } from "./index.ts";
+import * as MockStorage from "./storage.mock.tsx";
 
 const meta = {
 	argTypes: {

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, within } from "@storybook/test";
-import Storage from "../storage";
-import { Default as StorageDefault } from "../storage/storage.story";
-import Location, { useLocation } from "./index";
-import { TestComponent } from "./location.mock";
+import Storage from "../storage/index.ts";
+import { Default as StorageDefault } from "../storage/storage.story.tsx";
+import Location, { useLocation } from "./index.ts";
+import { TestComponent } from "./location.mock.tsx";
 
 const meta = {
 	component: Location.Provider,

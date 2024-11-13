@@ -1,19 +1,18 @@
-import * as React from "react";
-import { useConfiguration } from "./configuration";
+import { useConfiguration } from "./index.ts";
 
 export const mockConf = {
 	application: {
 		description: "This is a description for a mock application.",
 		id: "mock-app-id",
 		name: "A Mock Application",
-		get slug (): string {
+		get slug(): string {
 			return `${this.id}-slug`;
 		},
 	},
 	// fetch: {},
 };
 
-export function TestComponent () {
+export function TestComponent() {
 	const conf = useConfiguration();
 
 	return (

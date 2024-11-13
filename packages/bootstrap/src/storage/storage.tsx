@@ -1,7 +1,7 @@
 import { storage, type TSessionStorage } from "@theholocron/utils-storage";
 import * as React from "react";
-import { type ApplicationConf } from "../configuration";
-import type { WithChildren } from "../type";
+import { type ApplicationConf } from "../configuration/index.ts";
+import type { WithChildren } from "../type.ts";
 
 const Context = React.createContext<TSessionStorage | undefined>(undefined);
 Context.displayName = "@theholocron/bootstrap/Storage";
@@ -10,7 +10,7 @@ export interface StorageProps extends WithChildren {
 	conf: ApplicationConf;
 }
 
-export function Provider (props: StorageProps) {
+export function Provider(props: StorageProps) {
 	const value = React.useMemo(() => {
 		const vault = storage.session.create();
 
@@ -25,7 +25,7 @@ export function Provider (props: StorageProps) {
 }
 Provider.displayName = "@theholocron/bootstrap/Storage";
 
-export function useStorage (): TSessionStorage {
+export function useStorage(): TSessionStorage {
 	const context = React.useContext(Context);
 
 	if (context === undefined) {

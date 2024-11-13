@@ -1,11 +1,11 @@
 import { konami } from "@theholocron/utils-misc";
 import * as React from "react";
-import { type WithChildren } from "../type";
+import { type WithChildren } from "../type.ts";
 
 const Context = React.createContext<boolean | undefined>(undefined);
 Context.displayName = "@theholocron/bootstrap/Konami";
 
-export function Provider (props: WithChildren) {
+export function Provider(props: WithChildren) {
 	const [hasEnteredCode, setHasEnteredCode] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
@@ -29,7 +29,7 @@ export function Provider (props: WithChildren) {
 }
 Provider.displayName = "@theholocron/bootstrap/Konami";
 
-export function useKonami (): boolean {
+export function useKonami(): boolean {
 	const context = React.useContext(Context);
 
 	if (context === undefined) {

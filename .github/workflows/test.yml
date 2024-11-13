@@ -4,6 +4,34 @@ on:
   push
 
 jobs:
+  types:
+    name: Check build and types
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - packages/bootstrap
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout repository
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        name: Setup Node.js @v20
+        with:
+          cache: npm
+          node-version: 20.x
+
+      - run: npm ci
+        name: Install dependencies
+        env:
+          HUSKY: 0
+
+      - run: npm rebuild typescript && npm run build:lib && npm run types -- -- --project tsconfig.build.json
+        name: Build the library and types
+        working-directory: ${{ matrix.package }}
+
   coverage:
     name: Run tests and collect coverage
     runs-on: ubuntu-latest

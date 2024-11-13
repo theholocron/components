@@ -1,6 +1,6 @@
-import { Provider } from "./configuration";
+import { Provider } from "./configuration.tsx";
 
-export { useConfiguration } from "./configuration";
-export type { ApplicationConf, IConfiguration } from "./configuration";
+export { useConfiguration } from "./configuration.tsx";
+export type { ApplicationConf, IConfiguration } from "./configuration.tsx";
 
 export default { Provider };
