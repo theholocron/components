@@ -62,8 +62,12 @@ export const Error = {
 		const Component = () => {
 			try {
 				useStorage();
-			} catch (error) {
-				return <div data-testid="error-message">{error.message}</div>;
+			} catch (error: unknown) {
+				return (
+					<div data-testid="error-message">
+						{(error as Error)?.message}
+					</div>
+				);
 			}
 			return null; // Render nothing if no error
 		};
