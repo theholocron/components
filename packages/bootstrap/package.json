@@ -37,8 +37,6 @@
     "test:storybook": "test-storybook --coverage"
   },
   "dependencies": {
-    "@mantine/core": "^7.13.5",
-    "@mantine/hooks": "^7.13.5",
     "@theholocron/utils-location": "^0.2.1",
     "@theholocron/utils-misc": "^0.4.1",
     "@theholocron/utils-storage": "^0.3.1",
