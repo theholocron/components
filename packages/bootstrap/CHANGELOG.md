@@ -1,5 +1,11 @@
 # @theholocron/bootstrap
 
+## 0.1.1
+
+### Patch Changes
+
+- [`91806ba`](https://github.com/theholocron/components/commit/91806ba744186bc6f180dcede640f09534420585) Thanks [@iamnewton](https://github.com/iamnewton)! - Fix: errors with session storage
+
 ## 0.1.0
 
 ### Minor Changes
