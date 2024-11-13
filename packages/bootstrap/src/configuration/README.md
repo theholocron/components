@@ -32,22 +32,22 @@ export default function App (props: AppProps) {
 }
 ```
 
-### Hook
+### `useConfiguration`
 
-There is a hook that comes along with the library for retrieving the applications configuration.
+Use this function for retrieving the applications configuration.
 
 ```typescript
 import { useConfiguration } from "@theholocron/bootstrap";
 
-function Component () {
-    const conf = useConfiguration();
+function Component() {
+	const conf = useConfiguration();
 
-    return (
-        <div>
-            <h3>Configuration</h3>
-            <pre>{JSON.stringify(conf, null, 4)}</pre>
-        </div>
-    );
+	return (
+		<div>
+			<h3>Configuration</h3>
+			<pre>{JSON.stringify(conf, null, 4)}</pre>
+		</div>
+	);
 }
 ```
 

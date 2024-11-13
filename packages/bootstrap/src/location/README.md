@@ -24,16 +24,21 @@ export default function App (props: AppProps) {
 }
 ```
 
-### Hook
+### `useLocation`
 
-There is a hook that comes along with the library for detecting the current location.
+Use this function for detecting the current location.
 
 ```typescript
 import { useLocation } from "@theholocron/bootstrap";
 
-function Component () {
-    const location = useLocation();
+function Component() {
+	const location = useLocation();
 
-    return <h3>Current location: <code>{location.latitude}</code> (latitude), <code>{location.longitude}</code> (longitude)</h3>;
+	return (
+		<h3>
+			Current location: <code>{location.latitude}</code> (latitude),{" "}
+			<code>{location.longitude}</code> (longitude)
+		</h3>
+	);
 }
 ```

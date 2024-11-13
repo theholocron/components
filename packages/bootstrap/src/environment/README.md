@@ -26,16 +26,20 @@ export default function App (props: AppProps) {
 }
 ```
 
-### Hook
+### `useEnvironment`
 
-There is a hook that comes along with the library for detecting the Environment.
+Use this function for detecting the Environment.
 
 ```typescript
 import { useEnvironment } from "@theholocron/bootstrap";
 
-function Component () {
-    const environment = useEnvironment();
+function Component() {
+	const environment = useEnvironment();
 
-    return <h3>Environment: <code>{environment}</code></h3>;
+	return (
+		<h3>
+			Environment: <code>{environment}</code>
+		</h3>
+	);
 }
 ```

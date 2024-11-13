@@ -11,39 +11,39 @@ import Konami from "@theholocron/bootstrap";
 import * as React from "react";
 
 interface AppProps {
-    Component: React.ReactNode;
-    pageProps?: any;
+	Component: React.ReactNode;
+	pageProps?: any;
 }
 
-export default function App (props: AppProps) {
-    const { Component, pageProps } = props;
+export default function App(props: AppProps) {
+	const { Component, pageProps } = props;
 
-    return (
-        <Konami.Provider>
-            <Component {...pageProps} />
-        </Konami.Provider>
-    );
+	return (
+		<Konami.Provider>
+			<Component {...pageProps} />
+		</Konami.Provider>
+	);
 }
 ```
 
-### Hook
+### `useKonami`
 
-There is a hook that comes along with the library for detecting the Konami code.
+Use this function for detecting the Konami code.
 
 ```typescript
 import { useKonami } from "@theholocron/bootstrap";
 
-function Component () {
-    const konamiCodeEntered = useKonami();
+function Component() {
+	const konamiCodeEntered = useKonami();
 
-    return (
-        <React.Fragment>
-            {konamiCodeEntered ? (
-                <p>Konami Code Entered!</p>
-            ) : (
-                <p>Enter the Konami Code (↑ ↑ ↓ ↓ ← → ← → B A)</p>
-            )}
-        </React.Fragment>
-    );
+	return (
+		<React.Fragment>
+			{konamiCodeEntered ? (
+				<p>Konami Code Entered!</p>
+			) : (
+				<p>Enter the Konami Code (↑ ↑ ↓ ↓ ← → ← → B A)</p>
+			)}
+		</React.Fragment>
+	);
 }
 ```

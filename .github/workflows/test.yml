@@ -29,13 +29,13 @@ jobs:
       - run: npx playwright install --with-deps
         name: Install Playwright
 
-      - run: npm run build:storybook -- --quiet --output-dir=docs
+      - run: npm run build:storybook -- -- --quiet --output-dir=docs
         name: Build Storybook
 
       - run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
           "npx http-server docs --port 6006 --silent" \
-          "npx wait-on tcp:6006 && npm run test:storybook -- --coverage --reporter=junit"
+          "npx wait-on tcp:6006 && npm run test:storybook -- -- --coverage --reporter=junit"
         name: Run tests with coverage
         working-directory: ${{ matrix.package }}
 
@@ -113,7 +113,7 @@ jobs:
       - run: npx playwright install --with-deps
         name: Install Playwright
 
-      - run: npm run build:storybook -- --quiet --output-dir=docs
+      - run: npm run build:storybook -- -- --quiet --output-dir=docs
         name: Build Storybook
 
       - run: |

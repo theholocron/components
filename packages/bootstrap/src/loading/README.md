@@ -13,21 +13,25 @@ interface AppProps {
 	pageProps?: any;
 }
 
-export default function App (props: AppProps) {
+export default function App(props: AppProps) {
 	const { Component, pageProps } = props;
 
-	return <Loading.Provider><Component {...pageProps} /></Loading.Provider>;
+	return (
+		<Loading.Provider>
+			<Component {...pageProps} />
+		</Loading.Provider>
+	);
 }
 ```
 
-### Hook
+### `useLoading`
 
-There is a hook that comes along with the library for getting the loading state and setting it.
+Use this function for getting the loading state and setting it.
 
 ```typescript
 import { useLoading } from "@theholocron/bootstrap";
 
-function Component () {
+function Component() {
 	const { isLoading, setLoading } = useLoading();
 
 	const handleClick = () => {
@@ -39,7 +43,9 @@ function Component () {
 	}
 
 	return (
-		<button onClick={handleClick} type="button">Set Loading</button>
+		<button onClick={handleClick} type="button">
+			Set Loading
+		</button>
 	);
 }
 ```

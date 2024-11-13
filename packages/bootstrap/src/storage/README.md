@@ -28,9 +28,9 @@ export default function App (props: AppProps) {
 }
 ```
 
-### Hook
+### `useStorage`
 
-There is a hook that comes along with the library for getting, setting and removing items from the storage, i.e. `sessionStorage`.
+Use this function for getting, setting and removing items from the storage, i.e. `sessionStorage`.
 
 ```typescript
 import { useStorage } from "@theholocron/bootstrap";
