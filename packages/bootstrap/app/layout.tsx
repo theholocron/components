@@ -1,3 +1,4 @@
+import { MantineProvider } from "@mantine/core";
 import type { Metadata } from "next";
 import * as React from "react";
 import MSW from "./msw";
@@ -33,7 +34,9 @@ export default function RootLayout(props: WithChildren) {
 	return (
 		<html lang="en">
 			<body style={{ overflow: "hidden" }}>
-				<MSW.Provider>{props.children}</MSW.Provider>
+				<MSW.Provider>
+					<MantineProvider>{props.children}</MantineProvider>
+				</MSW.Provider>
 			</body>
 		</html>
 	);
