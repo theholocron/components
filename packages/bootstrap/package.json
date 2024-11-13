@@ -34,7 +34,7 @@
     "start:storybook": "storybook dev -p 6006",
     "test": "vitest",
     "test:cypress": "cypress open",
-    "test:storybook": "test-storybook --coverage"
+    "test:storybook": "test-storybook"
   },
   "dependencies": {
     "@theholocron/utils-location": "^0.2.1",

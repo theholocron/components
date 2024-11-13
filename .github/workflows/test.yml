@@ -25,17 +25,20 @@ jobs:
 
       - run: npm ci
         name: Install dependencies
+        env:
+          HUSKY: 0
 
       - run: npx playwright install --with-deps
         name: Install Playwright
 
-      - run: npm run build:storybook -- -- --quiet --output-dir=docs
+      - run: npm run build:storybook -- --quiet --output-dir=docs
         name: Build Storybook
+        working-directory: ${{ matrix.package }}
 
       - run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
           "npx http-server docs --port 6006 --silent" \
-          "npx wait-on tcp:6006 && npm run test:storybook -- -- --coverage --reporter=junit"
+          "npx wait-on tcp:6006 && npm run test:storybook -- --coverage --reporter=junit"
         name: Run tests with coverage
         working-directory: ${{ matrix.package }}
 
@@ -75,6 +78,8 @@ jobs:
 
       - run: npm ci
         name: Install dependencies
+        env:
+          HUSKY: 0
 
       - uses: chromaui/action@v1
         name: Publish to Chromatic
@@ -109,18 +114,22 @@ jobs:
 
       - run: npm ci
         name: Install dependencies
+        env:
+          HUSKY: 0
 
       - run: npx playwright install --with-deps
         name: Install Playwright
 
-      - run: npm run build:storybook -- -- --quiet --output-dir=docs
+      - run: npm run build:storybook -- --quiet --output-dir=docs
         name: Build Storybook
+        working-directory: ${{ matrix.package }}
 
       - run: |
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
           "npx http-server docs --port 6006 --silent" \
           "npx wait-on tcp:6006 && npm run test:storybook"
         name: Serve Storybook and run tests
+        working-directory: ${{ matrix.package }}
 
   # Run user flow tests with Cypress
   user-flow:
@@ -146,6 +155,8 @@ jobs:
 
       - run: npm ci
         name: Install dependencies
+        env:
+          HUSKY: 0
 
         # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
       - uses: cypress-io/github-action@v6
