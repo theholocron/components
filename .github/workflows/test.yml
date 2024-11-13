@@ -28,7 +28,7 @@ jobs:
         env:
           HUSKY: 0
 
-      - run: npm rebuild typescript && npm run build:lib && npm run types -- -- --project tsconfig.build.json
+      - run: npm rebuild typescript && npm run build:lib && npm run types -- --project tsconfig.build.json
         name: Build the library and types
         working-directory: ${{ matrix.package }}
 
