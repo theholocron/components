@@ -11,11 +11,6 @@ export type TLocation = {
 	isLoading: boolean;
 };
 
-type CachedLocationData = {
-	coords: IGeolocationCoordinates;
-	timestamp: number;
-};
-
 const Context = React.createContext<TLocation | undefined>(undefined);
 Context.displayName = "@theholocron/bootstrap/Location";
 
@@ -31,7 +26,9 @@ export function Provider(props: WithChildren) {
 		const now = Date.now();
 
 		const fetchLocation = async () => {
-			const cachedData = storage.getFrom<CachedLocationData>(storageKey);
+			const cachedData = storage.getFrom(
+				storageKey
+			) as CachedLocationData | null;
 			if (cachedData && now - cachedData.timestamp < maximumAge) {
 				setUserLocation(cachedData.coords);
 				setIsLoading(false);
