@@ -56,6 +56,9 @@ export const Default = {
 
 // Attempt to use the hook without provider
 export const Error = {
+	args: {
+		loader: MockLoading.Loader,
+	},
 	render: () => {
 		const Component = () => {
 			try {
