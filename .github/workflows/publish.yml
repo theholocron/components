@@ -30,7 +30,7 @@ jobs:
         env:
           HUSKY: 0
 
-      - run: npm rebuild typescript && npm run build:lib && npm run types -- --project tsconfig.build.json
+      - run: npm rebuild typescript && npm run build:lib && npm run types -- -- --project tsconfig.build.json
         name: Compile library
 
       - uses: changesets/action@v1
