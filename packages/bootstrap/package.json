@@ -39,10 +39,10 @@
   "dependencies": {
     "@mantine/core": "^7.13.5",
     "@mantine/hooks": "^7.13.5",
-    "@theholocron/utils-location": "^0.2.0",
-    "@theholocron/utils-misc": "^0.4.0",
-    "@theholocron/utils-storage": "^0.3.0",
-    "@theholocron/utils-string": "^0.1.0"
+    "@theholocron/utils-location": "^0.2.1",
+    "@theholocron/utils-misc": "^0.4.1",
+    "@theholocron/utils-storage": "^0.3.1",
+    "@theholocron/utils-string": "^0.1.1"
   },
   "devDependencies": {
     "@codesandbox/storybook-addon": "^0.2.0",
