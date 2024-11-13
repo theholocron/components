@@ -14,7 +14,7 @@ const meta = {
 	},
 	component: Storage.Provider,
 	title: "Storage",
-} satisfies Meta<typeof Storage>;
+} satisfies Meta<typeof Storage.Provider>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

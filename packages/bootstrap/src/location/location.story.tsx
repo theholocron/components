@@ -15,7 +15,7 @@ const meta = {
 			</Storage.Provider>
 		),
 	],
-} satisfies Meta<typeof Location>;
+} satisfies Meta<typeof Location.Provider>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

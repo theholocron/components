@@ -6,7 +6,7 @@ import Environment, { useEnvironment } from "./index";
 const meta = {
 	component: Environment.Provider,
 	title: "Environment",
-} satisfies Meta<typeof Environment>;
+} satisfies Meta<typeof Environment.Provider>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

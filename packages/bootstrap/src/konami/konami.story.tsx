@@ -7,7 +7,7 @@ import * as MockKonami from "./konami.mock";
 const meta = {
 	component: Konami.Provider,
 	title: "Konami",
-} satisfies Meta<typeof Konami>;
+} satisfies Meta<typeof Konami.Provider>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

@@ -12,7 +12,7 @@ const meta = {
 	},
 	component: Loading.Provider,
 	title: "Loading",
-} satisfies Meta<typeof Loading>;
+} satisfies Meta<typeof Loading.Provider>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
