@@ -1,12 +1,29 @@
+import * as React from "react";
 import Configuration, { type IConfiguration } from "../configuration/";
-import Environment from "../environment/";
+import Environment, { useEnvironment } from "../environment/";
 import Konami from "../konami/";
 import Loading from "../loading/";
 import { type LoadingProps } from "../loading/loading";
 import Location from "../location/";
-import Storage from "../storage/";
+import Storage, { useStorage } from "../storage/";
 import type { WithChildren } from "../type";
-import { Container } from "./container";
+
+interface ContainerProps extends WithChildren {
+	conf: IConfiguration;
+}
+
+function Container(props: ContainerProps) {
+	const environment = useEnvironment();
+	const storage = useStorage();
+
+	const { application } = props.conf;
+
+	storage.sendTo("application", application);
+	storage.sendTo("environment", environment);
+
+	return <React.Fragment>{props.children}</React.Fragment>;
+}
+Container.displayName = "@theholocron/bootstrap/Container";
 
 export interface BootstrapProps
 	extends WithChildren,
