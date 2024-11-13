@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Location CachedLocation smoke-test 1`] = `
+<div data-testid="location">
+  <p>
+    Latitude: 0
+  </p>
+  <p>
+    Longitude: 0
+  </p>
+  <p>
+    Accuracy: 0 meters
+  </p>
+</div>
+`;
+
+exports[`Location Default smoke-test 1`] = `
+<div data-testid="location">
+  <p>
+    Latitude: 0
+  </p>
+  <p>
+    Longitude: 0
+  </p>
+  <p>
+    Accuracy: 0 meters
+  </p>
+</div>
+`;
+
+exports[`Location Error play-test 1`] = `
+<div data-testid="error-message">
+  useLocation must be used within a Location.Provider!
+</div>
+`;
+
+exports[`Location LocationError smoke-test 1`] = `
+<div data-testid="location">
+  <p>
+    Latitude: 0
+  </p>
+  <p>
+    Longitude: 0
+  </p>
+  <p>
+    Accuracy: 0 meters
+  </p>
+</div>
+`;
+
+exports[`Location PermissionDenied smoke-test 1`] = `
+<div data-testid="location">
+  <p>
+    Latitude: 0
+  </p>
+  <p>
+    Longitude: 0
+  </p>
+  <p>
+    Accuracy: 0 meters
+  </p>
+</div>
+`;

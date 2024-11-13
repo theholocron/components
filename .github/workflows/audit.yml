@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         package:
-          - packages/package-a
+          - packages/bootstrap
     steps:
       - uses: actions/checkout@v4
         name: Checkout repository
@@ -40,5 +40,5 @@ jobs:
       - uses: jackyef/bundlewatch-gh-action@0.3.0
         name: Analyze using BundleWatch
         with:
-          build-script: npm run build
+          build-script: npm run build:lib
           bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}

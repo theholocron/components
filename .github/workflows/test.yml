@@ -1,0 +1,208 @@
+name: Test
+
+on:
+  push
+
+jobs:
+  types:
+    name: Check build and types
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - packages/bootstrap
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout repository
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        name: Setup Node.js @v20
+        with:
+          cache: npm
+          node-version: 20.x
+
+      - run: npm ci
+        name: Install dependencies
+        env:
+          HUSKY: 0
+
+      - run: npm rebuild typescript && npm run build:lib && npm run types -- --project tsconfig.build.json
+        name: Build the library and types
+        working-directory: ${{ matrix.package }}
+
+  coverage:
+    name: Run tests and collect coverage
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - packages/bootstrap
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout repository
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        name: Setup Node.js @v20
+        with:
+          cache: npm
+          node-version: 20.x
+
+      - run: npm ci
+        name: Install dependencies
+        env:
+          HUSKY: 0
+
+      - run: npx playwright install --with-deps
+        name: Install Playwright
+
+      - run: npm run build:storybook -- --quiet --output-dir=docs
+        name: Build Storybook
+        working-directory: ${{ matrix.package }}
+
+      - run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+          "npx http-server docs --port 6006 --silent" \
+          "npx wait-on tcp:6006 && npm run test:storybook -- --coverage --junit --ci"
+        name: Run tests with coverage
+        working-directory: ${{ matrix.package }}
+
+      - uses: codecov/codecov-action@v4
+        name: Upload results to Codecov
+        with:
+          files: ./${{ matrix.package }}/coverage/coverage-final.json
+          flags: ${{ matrix.package }}
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - uses: codecov/test-results-action@v1
+        name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        with:
+          working-directory: ${{ matrix.package }}
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  # Run visual and composition tests with Chromatic
+  visual-and-composition:
+    name: Test Visual and Composition
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - packages/bootstrap
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout repository
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        name: Setup Node.js @v20
+        with:
+          cache: npm
+          node-version: 20.x
+
+      - run: npm ci
+        name: Install dependencies
+        env:
+          HUSKY: 0
+
+      - uses: chromaui/action@v1
+        name: Publish to Chromatic
+        with:
+          buildScriptName: build:storybook
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: ${{ matrix.package }}
+        env:
+          NEXT_PUBLIC_ENVIRONMENT: "development"
+          STORYBOOK_NEXT_PUBLIC_ENVIRONMENT: "development"
+
+  # Run interaction and accessibility tests
+  interaction-and-accessibility:
+    name: Test Interactions and Accessibility
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - packages/bootstrap
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout repository
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        name: Setup Node.js @v20
+        with:
+          cache: npm
+          node-version: 20.x
+
+      - run: npm ci
+        name: Install dependencies
+        env:
+          HUSKY: 0
+
+      - run: npx playwright install --with-deps
+        name: Install Playwright
+
+      - run: npm run build:storybook -- --quiet --output-dir=docs
+        name: Build Storybook
+        working-directory: ${{ matrix.package }}
+
+      - run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+          "npx http-server docs --port 6006 --silent" \
+          "npx wait-on tcp:6006 && npm run test:storybook -- --ci"
+        name: Serve Storybook and run tests
+        working-directory: ${{ matrix.package }}
+
+  # Run user flow tests with Cypress
+  user-flow:
+    name: Test User Flow
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
+      matrix:
+        containers: [1, 2] # Uses 2 parallel instances
+        package:
+          - packages/bootstrap
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout repository
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        name: Setup Node.js @v20
+        with:
+          cache: npm
+          node-version: 20.x
+
+      - run: npm ci
+        name: Install dependencies
+        env:
+          HUSKY: 0
+
+        # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
+      - uses: cypress-io/github-action@v6
+        name: Cypress run
+        with:
+          # Starts web server for E2E tests - replace with your own server invocation
+          # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-server
+          start: npm run dev
+          wait-on: "http://localhost:3000" # Waits for above
+          # Records to Cypress Cloud
+          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
+          record: true
+          parallel: true # Runs test in parallel using settings above
+          working-directory: ${{ matrix.package }}
+        env:
+          # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
+          # in GitHub repo → Settings → Secrets → Actions
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HUSKY: 0

@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Task Archived smoke-test 1`] = `
+<ul>
+  <div class="list-item TASK_ARCHIVED"
+       role="listitem"
+       aria-label="task-3"
+  >
+    <label for="checked"
+           aria-label="archiveTask-3"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-3"
+             checked
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-3"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Write schema for account menu"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Write schema for account menu"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+  </div>
+</ul>
+`;
+
+exports[`Task Default smoke-test 1`] = `
+<ul>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-1"
+  >
+    <label for="checked"
+           aria-label="archiveTask-1"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-1"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-1"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="Buy milk"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="Buy milk"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-1"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+</ul>
+`;
+
+exports[`Task LongTitle smoke-test 1`] = `
+<ul>
+  <div class="list-item TASK_INBOX"
+       role="listitem"
+       aria-label="task-4"
+  >
+    <label for="checked"
+           aria-label="archiveTask-4"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-4"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-4"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="This task's name is absurdly large. In fact, I think if I keep going I might end up with content overflow. What will happen? The star that represents a pinned task could have text overlapping. The text could cut-off abruptly when it reaches the star. I hope not!"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-4"
+            aria-label="pin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+</ul>
+`;
+
+exports[`Task Pinned smoke-test 1`] = `
+<ul>
+  <div class="list-item TASK_PINNED"
+       role="listitem"
+       aria-label="task-2"
+  >
+    <label for="checked"
+           aria-label="archiveTask-2"
+           class="checkbox"
+    >
+      <input type="checkbox"
+             disabled
+             name="checked"
+             id="archiveTask-2"
+      >
+      <span class="checkbox-custom"
+            role="button"
+            aria-label="archiveButton-2"
+      >
+      </span>
+    </label>
+    <label for="title"
+           aria-label="QA dropdown"
+           class="title"
+    >
+      <input type="text"
+             name="title"
+             placeholder="Input title"
+             value="QA dropdown"
+             style="text-overflow: ellipsis;"
+      >
+    </label>
+    <button aria-label="delete"
+            class="delete-button"
+    >
+      <span class="icon-trash">
+      </span>
+    </button>
+    <button class="pin-button"
+            id="pinTask-2"
+            aria-label="unpin"
+    >
+      <span class="icon-star">
+      </span>
+    </button>
+  </div>
+</ul>
+`;

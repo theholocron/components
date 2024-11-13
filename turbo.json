@@ -2,8 +2,15 @@
   "$schema": "https://turborepo.org/schema.json",
   "tasks": {
     "build": {},
+    "build:lib": {},
+    "build:storybook": {},
+    "dev": {},
     "lint": {},
-    "release": {},
-    "test": {}
+    "start": {},
+    "start:storybook": {},
+    "test": {},
+    "test:cypress": {},
+    "test:storybook": {},
+    "types": {}
   }
 }

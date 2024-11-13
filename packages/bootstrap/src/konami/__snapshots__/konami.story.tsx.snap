@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Konami Default play-test 1`] = `
+<div data-testid="has-entered">
+  Not Entered
+</div>
+`;
+
+exports[`Konami Error play-test 1`] = `
+<div data-testid="error-message">
+  useKonami must be used within Konami.Provider!
+</div>
+`;

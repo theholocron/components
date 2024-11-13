@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Environment Default play-test 1`] = `
+<div data-testid="environment-display">
+  Current Environment: development
+</div>
+`;
+
+exports[`Environment Error play-test 1`] = `
+<div data-testid="error-message">
+  useEnvironment must be used within Environment.Provider!
+</div>
+`;
