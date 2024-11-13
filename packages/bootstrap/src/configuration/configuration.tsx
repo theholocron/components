@@ -23,13 +23,17 @@ export interface ConfigurationProps extends WithChildren {
 	conf: IConfiguration;
 }
 
-export function Provider (props: ConfigurationProps) {
+export function Provider(props: ConfigurationProps) {
 	const conf = {
 		...props.conf,
 		application: {
 			...props.conf.application,
-			slug: str.toKebabCase(props.conf.application?.slug || props.conf.application.id),
-			title: props?.title ?? str.toTitleCase(props.conf.application?.name),
+			slug: str.toKebabCase(
+				props.conf.application?.slug || props.conf.application.id
+			),
+			title:
+				props.conf.application?.title ??
+				str.toTitleCase(props.conf.application?.name),
 		},
 	};
 
@@ -39,11 +43,13 @@ export function Provider (props: ConfigurationProps) {
 }
 Provider.displayName = "@theholocron/bootstrap/Configuration";
 
-export function useConfiguration (): IConfiguration {
+export function useConfiguration(): IConfiguration {
 	const context = React.useContext(Context);
 
 	if (context === undefined) {
-		throw new Error(`useConfiguration must be used within Configuration.Provider!`);
+		throw new Error(
+			`useConfiguration must be used within Configuration.Provider!`
+		);
 	}
 
 	return context;
