@@ -35,6 +35,7 @@ export default defineConfig({
 			uploadToken: process.env.CODECOV_TOKEN,
 		}),
 	],
+	publicDir: false,
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"), // Example alias, adjust as needed
