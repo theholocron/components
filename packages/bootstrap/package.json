@@ -41,7 +41,7 @@
   "dependencies": {
     "@theholocron/utils-location": "^0.2.2",
     "@theholocron/utils-misc": "^0.4.2",
-    "@theholocron/utils-storage": "^0.3.2",
+    "@theholocron/utils-storage": "^0.3.3",
     "@theholocron/utils-string": "^0.1.2"
   },
   "devDependencies": {
