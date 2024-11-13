@@ -11,11 +11,11 @@ export default defineConfig({
 		},
 	},
 	e2e: {
-		setupNodeEvents(on, config) {},
+		setupNodeEvents() {},
 		baseUrl: "http://localhost:3000/", // this is the default port for `next` that runs a server
-		specPattern: "src/**/*.{cy.js,cy.ts}",
+		specPattern: "**/*.{cy.js,cy.ts}",
 		supportFile: false,
 		retries: 2,
 	},
-	projectId: "",
+	projectId: "1n67e4",
 });

@@ -28,7 +28,7 @@ export function TaskList(props: TaskListProps) {
 		onDeleteTask,
 	};
 
-	const LoadingRow = (
+	const LoadingRow = () => (
 		<Group
 			align="center"
 			justify="space-between"
