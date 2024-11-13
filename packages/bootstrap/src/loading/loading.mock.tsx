@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useLoading } from "./loading";
 
 const spinAnimation = `
@@ -8,7 +7,7 @@ const spinAnimation = `
 	}
 `;
 
-export function Loader () {
+export function Loader() {
 	return (
 		<div
 			data-testid="loader"
@@ -49,19 +48,18 @@ export function Loader () {
 // Example component that utilizes the Loading context
 // @TODO: update to use msw
 export const TestComponent = () => {
-    const { setLoading } = useLoading();
+	const { setLoading } = useLoading();
 
 	const fetchData = async () => {
-		setLoading(true);
+		setLoading?.(true);
 		await fetch("/api/data"); // Trigger a network request
-		setLoading(false);
+		setLoading?.(false);
 	};
 
-    return (
-        <div>
-            <button onClick={fetchData}>Fetch Data</button>
-            <p>Click the button to simulate loading.</p>
-        </div>
-    );
+	return (
+		<div>
+			<button onClick={fetchData}>Fetch Data</button>
+			<p>Click the button to simulate loading.</p>
+		</div>
+	);
 };
-
