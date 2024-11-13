@@ -26,7 +26,15 @@ export function Provider(props: LoadingProps) {
 
 	return (
 		<Context.Provider value={value}>
-			{isLoading ? <Loader /> : children}
+			{isLoading ? (
+				typeof Loader === "function" ? (
+					<Loader />
+				) : (
+					Loader
+				)
+			) : (
+				children
+			)}
 		</Context.Provider>
 	);
 }
