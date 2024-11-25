@@ -47,7 +47,7 @@
   "devDependencies": {
     "@codecov/vite-plugin": "^1.2.1",
     "@codesandbox/storybook-addon": "^0.2.0",
-    "@mantine/core": "^7.13.5",
+    "@mantine/core": "^7.14.2",
     "@mantine/hooks": "^7.13.5",
     "@next/bundle-analyzer": "^15.0.3",
     "@storybook/nextjs": "^8.2.5",
