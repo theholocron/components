@@ -50,7 +50,7 @@
     "@mantine/core": "^7.14.2",
     "@mantine/hooks": "^7.13.5",
     "@next/bundle-analyzer": "^15.0.3",
-    "@storybook/nextjs": "^8.2.5",
+    "@storybook/nextjs": "^8.4.7",
     "@theholocron/eslint-config": "^3.5.1",
     "@theholocron/jest-config": "^3.5.1",
     "@theholocron/prettier-config": "^3.5.1",
