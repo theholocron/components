@@ -60,19 +60,19 @@
     "@tsconfig/next": "^2.0.3",
     "@types/node": "^22.9.0",
     "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react-dom": "^19.0.3",
     "@types/web": "^0.0.178",
     "@vitejs/plugin-react": "^4.3.2",
     "alexjs": "^1.0.0",
     "next": "^14",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.0.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.11"
   },
   "peerDependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^19.0.0"
   },
   "packageManager": "npm@9.5.0",
   "engines": {
