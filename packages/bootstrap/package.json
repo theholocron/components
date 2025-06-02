@@ -48,7 +48,7 @@
     "@codecov/vite-plugin": "^1.2.1",
     "@codesandbox/storybook-addon": "^0.2.0",
     "@mantine/core": "^7.14.2",
-    "@mantine/hooks": "^7.13.5",
+    "@mantine/hooks": "^8.0.2",
     "@next/bundle-analyzer": "^15.0.3",
     "@storybook/nextjs": "^8.4.7",
     "@theholocron/eslint-config": "^3.5.1",
