@@ -1,4 +1,4 @@
-import { useKonami } from "./index.ts";
+import { useKonami } from "./index";
 
 export function TestComponent() {
 	const hasEnteredCode = useKonami();

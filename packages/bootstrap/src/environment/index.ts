@@ -1,6 +1,6 @@
-import { Provider } from "./environment.tsx";
+import { Provider } from "./environment";
 
-export { useEnvironment } from "./environment.tsx";
-export type { TEnvironment } from "./environment.tsx";
+export { useEnvironment } from "./environment";
+export type { TEnvironment } from "./environment";
 
 export default { Provider };

@@ -1,10 +1,11 @@
 import { Container, Group, Paper, Skeleton, Text, Title } from "@mantine/core";
 import * as React from "react";
 import { Task, type TaskProps } from "./task";
+import { ITask } from "./use-tasks";
 
 export interface TaskListProps {
 	loading?: boolean;
-	tasks: TaskProps["task"][];
+	tasks: ITask[];
 	onTogglePinTask: TaskProps["onTogglePinTask"];
 	onArchiveTask: TaskProps["onArchiveTask"];
 	onEditTitle: TaskProps["onEditTitle"];

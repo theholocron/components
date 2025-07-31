@@ -1,9 +1,9 @@
 import * as path from "node:path";
-import { codecovVitePlugin } from "@codecov/vite-plugin";
+import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { coverageConfigDefaults, defineConfig } from "vitest/config";
 
-const NAME = "bootstrap";
+const NAME = "components-bootstrap";
 
 /*
  * @see https://vitejs.dev/config/
@@ -28,22 +28,33 @@ export default defineConfig({
 	},
 	plugins: [
 		react(),
-		codecovVitePlugin({
-			enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
-			bundleName: NAME,
-			gitService: "github",
-			uploadToken: process.env.CODECOV_TOKEN,
-		}),
+		storybookTest(),
 	],
-	publicDir: false,
+	publicDir: "public",
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"), // Example alias, adjust as needed
 		},
 	},
 	test: {
+		browser: {
+			enabled: true,
+			provider: "playwright",
+			headless: true,
+			instances: [{ browser: "chromium" }],
+		},
+		coverage: {
+			all: false,
+			exclude: [
+				...coverageConfigDefaults.exclude,
+				"**/handlers.*", // msw handlers
+				"**/*.{mock}.*",
+			],
+			provider: "v8",
+			reporter: ["text", "lcov"],
+		},
+		environment: "jsdom",
 		globals: true,
-		environment: "jsdom", // Use jsdom for testing React components
-		setupFiles: "./test.setup.ts", // Optional setup file for additional configurations
+		setupFiles: ["./vitest.setup.ts"],
 	},
 });

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, userEvent, within } from "@storybook/test";
 import { konami } from "@theholocron/utils-misc";
-import Konami, { useKonami } from "./index.ts";
-import * as MockKonami from "./konami.mock.tsx";
+import { expect } from "storybook/test";
+import Konami, { useKonami } from "./index";
+import * as MockKonami from "./konami.mock";
 
 const meta = {
 	component: Konami.Provider,
@@ -17,9 +17,7 @@ export const Default = {
 			<MockKonami.TestComponent />
 		</Konami.Provider>
 	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas, userEvent }) => {
 		// 1. Verify initial state (Konami code has not been entered)
 		const component = await canvas.findByTestId("has-entered");
 		await expect(component).toHaveTextContent("Not Entered");
@@ -51,9 +49,7 @@ export const Error = {
 
 		return <Component />;
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas }) => {
 		const errorMessage = await canvas.findByTestId("error-message");
 		expect(errorMessage).toHaveTextContent(
 			"useKonami must be used within Konami.Provider!"

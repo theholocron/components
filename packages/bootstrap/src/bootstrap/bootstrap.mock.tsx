@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useLoading } from "../loading/index.ts";
+import { useLoading } from "../loading/index";
 
 export function Loading() {
 	const { setLoading } = useLoading();

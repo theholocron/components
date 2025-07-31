@@ -1,5 +1,5 @@
 import * as React from "react";
-import type { WithChildren } from "../type.ts";
+import type { WithChildren } from "../type";
 
 export interface ILoading {
 	isLoading?: boolean;
@@ -10,7 +10,7 @@ const Context = React.createContext<ILoading | undefined>(undefined);
 Context.displayName = "@theholocron/bootstrap/Loading";
 
 export interface LoadingProps extends WithChildren {
-	loader: React.ReactElement | JSX.Element | (() => JSX.Element);
+	loader: React.ReactElement | React.JSX.Element | (() => React.JSX.Element);
 }
 
 export function Provider(props: LoadingProps) {

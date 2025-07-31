@@ -1,5 +1,5 @@
 import * as React from "react";
-import type { WithChildren } from "../type.ts";
+import type { WithChildren } from "../type";
 
 export type TEnvironment = "development" | "test" | "staging" | "production";
 

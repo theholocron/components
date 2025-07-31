@@ -1,6 +1,6 @@
 import { konami } from "@theholocron/utils-misc";
 import * as React from "react";
-import { type WithChildren } from "../type.ts";
+import { type WithChildren } from "../type";
 
 const Context = React.createContext<boolean | undefined>(undefined);
 Context.displayName = "@theholocron/bootstrap/Konami";

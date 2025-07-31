@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, within } from "@storybook/test";
-import * as MockEnvironment from "./environment.mock.tsx";
-import Environment, { useEnvironment } from "./index.ts";
+import { expect } from "storybook/test";
+import * as MockEnvironment from "./environment.mock";
+import Environment, { useEnvironment } from "./index";
 
 const meta = {
 	component: Environment.Provider,
 	title: "Environment",
 } satisfies Meta<typeof Environment.Provider>;
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
@@ -16,9 +17,7 @@ export const Default: Story = {
 			<MockEnvironment.TestComponent />
 		</Environment.Provider>
 	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas }) => {
 		// Expect the displayed environment
 		const environmentDisplay = await canvas.findByTestId(
 			"environment-display"
@@ -47,9 +46,7 @@ export const Error = {
 
 		return <Component />;
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas }) => {
 		const errorMessage = await canvas.findByTestId("error-message");
 		expect(errorMessage).toHaveTextContent(
 			"useEnvironment must be used within Environment.Provider!"

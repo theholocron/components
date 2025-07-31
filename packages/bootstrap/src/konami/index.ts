@@ -1,5 +1,5 @@
-import { Provider } from "./konami.tsx";
+import { Provider } from "./konami";
 
-export { useKonami } from "./konami.tsx";
+export { useKonami } from "./konami";
 
 export default { Provider };

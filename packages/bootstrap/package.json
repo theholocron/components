@@ -2,26 +2,60 @@
   "name": "@theholocron/bootstrap",
   "version": "0.1.1",
   "description": "A set of components to bootstrap an application.",
-  "homepage": "https://github.com/theholocron/bootstrap#readme",
-  "bugs": "https://github.com/theholocron/bootstrap/issues",
+  "homepage": "https://github.com/theholocron/components/tree/main/packages/bootstrap#readme",
+  "bugs": "https://github.com/theholocron/components/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theholocron/bootstrap.git"
+    "url": "git+https://github.com/theholocron/components.git"
   },
   "license": "GPL-3.0",
   "author": "Newton Koumantzelis",
   "type": "module",
   "exports": {
+    "./bootstrap": {
+      "types": "./dist/bootstrap/index.d.ts",
+      "import": "./dist/bootstrap/index.es.js",
+      "require": "./dist/bootstrap/index.cjs.js"
+    },
+    "./configuration": {
+      "types": "./dist/configuration/index.d.ts",
+      "import": "./dist/configuration/index.es.js",
+      "require": "./dist/configuration/index.cjs.js"
+    },
+    "./environment": {
+      "types": "./dist/environment/index.d.ts",
+      "import": "./dist/environment/index.es.js",
+      "require": "./dist/environment/index.cjs.js"
+    },
+    "./konami": {
+      "types": "./dist/konami/index.d.ts",
+      "import": "./dist/konami/index.es.js",
+      "require": "./dist/konami/index.cjs.js"
+    },
+    "./loading": {
+      "types": "./dist/loading/index.d.ts",
+      "import": "./dist/loading/index.es.js",
+      "require": "./dist/loading/index.cjs.js"
+    },
+    "./location": {
+      "types": "./dist/location/index.d.ts",
+      "import": "./dist/location/index.es.js",
+      "require": "./dist/location/index.cjs.js"
+    },
+    "./storage": {
+      "types": "./dist/storage/index.d.ts",
+      "import": "./dist/storage/index.es.js",
+      "require": "./dist/storage/index.cjs.js"
+    },
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/bootstrap.es.js",
       "require": "./dist/bootstrap.cjs.js"
-    },
-    "./style": "./dist/style.css"
+    }
   },
   "main": "dist/bootstrap.cjs.js",
   "module": "dist/bootstrap.es.js",
   "types": "dist/index.d.ts",
-  "style": "dist/style.css",
   "files": [
     "dist/*"
   ],
@@ -30,12 +64,12 @@
     "build:lib": "vite build",
     "build:storybook": "NEXT_PUBLIC_ENVIRONMENT=development storybook build --output-dir docs",
     "dev": "next dev",
-    "lint": "docker run -e LOG_LEVEL=DEBUG -e RUN_LOCAL=true -v .:/tmp/lint --rm ghcr.io/super-linter/super-linter:latest",
+    "lint": "docker run --rm -e RUN_LOCAL=true -v .:/tmp/lint github/super-linter",
     "start": "next start",
-    "start:storybook": "storybook dev -p 6006",
+    "start:storybook": "storybook dev",
     "test": "vitest",
     "test:cypress": "cypress open",
-    "test:storybook": "test-storybook",
+    "test:storybook": "vitest run",
     "types": "npx tsc"
   },
   "dependencies": {
@@ -45,38 +79,18 @@
     "@theholocron/utils-string": "^0.1.2"
   },
   "devDependencies": {
-    "@codecov/vite-plugin": "^1.2.1",
-    "@codesandbox/storybook-addon": "^0.2.0",
     "@mantine/core": "^8.2.1",
-    "@mantine/hooks": "^7.13.5",
-    "@next/bundle-analyzer": "^15.0.3",
-    "@storybook/nextjs": "^8.4.7",
-    "@theholocron/eslint-config": "^3.5.1",
-    "@theholocron/jest-config": "^3.5.1",
-    "@theholocron/prettier-config": "^3.5.1",
-    "@theholocron/storybook-config": "^3.5.1",
-    "@theholocron/stylelint-config": "^3.5.1",
-    "@theholocron/tsconfig": "^3.5.1",
-    "@tsconfig/next": "^2.0.3",
-    "@types/node": "^24.0.15",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@types/web": "^0.0.233",
-    "@vitejs/plugin-react": "^4.3.2",
-    "alexjs": "^1.0.0",
-    "next": "^15",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.11"
+    "@mantine/hooks": "^8.2.1",
+    "@tabler/icons-react": "^3.22.0",
+    "next": "^15"
   },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "packageManager": "npm@9.5.0",
   "engines": {
-    "node": ">=20",
+    "node": ">=22",
     "npm": ">=10"
   },
   "publishConfig": {

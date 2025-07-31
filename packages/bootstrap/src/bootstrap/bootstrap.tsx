@@ -1,12 +1,12 @@
 import * as React from "react";
-import Configuration, { type IConfiguration } from "../configuration/index.ts";
-import Environment, { useEnvironment } from "../environment/index.ts";
-import Konami from "../konami/index.ts";
-import Loading from "../loading/index.ts";
-import { type LoadingProps } from "../loading/loading.tsx";
-import Location from "../location/index.ts";
-import Storage, { useStorage } from "../storage/index.ts";
-import type { WithChildren } from "../type.ts";
+import Configuration, { type IConfiguration } from "../configuration/index";
+import Environment, { useEnvironment } from "../environment/index";
+import Konami from "../konami/index";
+import Loading from "../loading/index";
+import { type LoadingProps } from "../loading/loading";
+import Location from "../location/index";
+import Storage, { useStorage } from "../storage/index";
+import type { WithChildren } from "../type";
 
 interface ContainerProps extends WithChildren {
 	conf: IConfiguration;

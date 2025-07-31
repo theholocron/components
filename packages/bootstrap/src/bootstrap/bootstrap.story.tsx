@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, within } from "@storybook/test";
 import * as React from "react";
-import * as MockConfiguration from "../configuration/configuration.mock.tsx";
-import ConfigurationStory from "../configuration/configuration.story.tsx";
-import * as MockLoading from "../loading/loading.mock.tsx";
-import LoadingStory from "../loading/loading.story.tsx";
-import * as MockBootstrap from "./bootstrap.mock.tsx";
-import { Bootstrap } from "./index.ts";
+import { expect } from "storybook/test";
+import * as MockConfiguration from "../configuration/configuration.mock";
+import ConfigurationStory from "../configuration/configuration.story";
+import * as MockLoading from "../loading/loading.mock";
+import LoadingStory from "../loading/loading.story";
+import * as MockBootstrap from "./bootstrap.mock";
+import { Bootstrap } from "./index";
 
 const meta = {
 	argTypes: {
@@ -17,6 +17,7 @@ const meta = {
 	title: "Bootstrap",
 } satisfies Meta<typeof Bootstrap>;
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Default = {
@@ -29,8 +30,7 @@ export const Default = {
 			<MockConfiguration.TestComponent />
 		</Bootstrap>
 	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
+	play: async ({ canvas }) => {
 
 		const childrenElement = await canvas.findByTestId("mock-configuration");
 		expect(childrenElement).toBeInTheDocument();
@@ -48,9 +48,7 @@ export const IsLoading = {
 			</Bootstrap>
 		</React.StrictMode>
 	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas }) => {
 		const childrenElement = await canvas.findByTestId("loader");
 		expect(childrenElement).toBeInTheDocument();
 	},

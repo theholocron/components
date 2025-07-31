@@ -1,1 +1,1 @@
-export * from "./bootstrap.tsx";
+export * from "./bootstrap";

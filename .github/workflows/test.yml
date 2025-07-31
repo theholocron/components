@@ -11,17 +11,21 @@ jobs:
       matrix:
         package:
           - packages/bootstrap
+          - packages/display
+          - packages/forms
+          - packages/interactions
     steps:
       - uses: actions/checkout@v4
         name: Checkout repository
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v4
-        name: Setup Node.js @v20
+        name: Setup Node.js
         with:
           cache: npm
-          node-version: 20.x
+          node-version: 22.x
 
       - run: npm ci
         name: Install dependencies
@@ -39,36 +43,35 @@ jobs:
       matrix:
         package:
           - packages/bootstrap
+          - packages/display
+          - packages/forms
+          - packages/interactions
     steps:
       - uses: actions/checkout@v4
         name: Checkout repository
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v4
-        name: Setup Node.js @v20
+        name: Setup Node.js
         with:
           cache: npm
-          node-version: 20.x
+          node-version: 22.x
 
       - run: npm ci
         name: Install dependencies
         env:
           HUSKY: 0
 
-      - run: npx playwright install --with-deps
+      - run: npx playwright install chromium --with-deps
         name: Install Playwright
 
-      - run: npm run build:storybook -- --quiet --output-dir=docs
-        name: Build Storybook
-        working-directory: ${{ matrix.package }}
-
-      - run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-          "npx http-server docs --port 6006 --silent" \
-          "npx wait-on tcp:6006 && npm run test:storybook -- --coverage --junit --ci"
+      - run: npm run test:storybook -- --coverage
         name: Run tests with coverage
         working-directory: ${{ matrix.package }}
+        env:
+          NEXT_PUBLIC_ENVIRONMENT: "development"
 
       - uses: codecov/codecov-action@v4
         name: Upload results to Codecov
@@ -89,20 +92,18 @@ jobs:
     name: Test Visual and Composition
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        package:
-          - packages/bootstrap
     steps:
       - uses: actions/checkout@v4
         name: Checkout repository
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v4
-        name: Setup Node.js @v20
+        name: Setup Node.js
         with:
           cache: npm
-          node-version: 20.x
+          node-version: 22.x
 
       - run: npm ci
         name: Install dependencies
@@ -110,15 +111,43 @@ jobs:
           HUSKY: 0
 
       - uses: chromaui/action@v1
-        name: Publish to Chromatic
+        name: Publish Bootstrap Components to Chromatic
         with:
           buildScriptName: build:storybook
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
+          projectToken: ${{ secrets.CHROMATIC_BOOTSTRAP_COMP_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          workingDir: ${{ matrix.package }}
+          workingDir: packages/bootstrap
         env:
           NEXT_PUBLIC_ENVIRONMENT: "development"
           STORYBOOK_NEXT_PUBLIC_ENVIRONMENT: "development"
+
+      - uses: chromaui/action@v1
+        name: Publish Display Components to Chromatic
+        with:
+          buildScriptName: build:storybook
+          onlyChanged: true
+          projectToken: ${{ secrets.CHROMATIC_DISPLAY_COMP_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: packages/display
+
+      - uses: chromaui/action@v1
+        name: Publish Forms to Components Chromatic
+        with:
+          buildScriptName: build:storybook
+          onlyChanged: true
+          projectToken: ${{ secrets.CHROMATIC_FORMS_COMP_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: packages/forms
+
+      - uses: chromaui/action@v1
+        name: Publish Interactions Components to Chromatic
+        with:
+          buildScriptName: build:storybook
+          onlyChanged: true
+          projectToken: ${{ secrets.CHROMATIC_INTERACTIONS_COMP_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: packages/interactions
 
   # Run interaction and accessibility tests
   interaction-and-accessibility:
@@ -128,36 +157,35 @@ jobs:
       matrix:
         package:
           - packages/bootstrap
+          - packages/display
+          - packages/forms
+          - packages/interactions
     steps:
       - uses: actions/checkout@v4
         name: Checkout repository
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v4
-        name: Setup Node.js @v20
+        name: Setup Node.js
         with:
           cache: npm
-          node-version: 20.x
+          node-version: 22.x
 
       - run: npm ci
         name: Install dependencies
         env:
           HUSKY: 0
 
-      - run: npx playwright install --with-deps
+      - run: npx playwright install chromium --with-deps
         name: Install Playwright
 
-      - run: npm run build:storybook -- --quiet --output-dir=docs
-        name: Build Storybook
+      - run: npm run test:storybook
+        name: Run tests
         working-directory: ${{ matrix.package }}
-
-      - run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-          "npx http-server docs --port 6006 --silent" \
-          "npx wait-on tcp:6006 && npm run test:storybook -- --ci"
-        name: Serve Storybook and run tests
-        working-directory: ${{ matrix.package }}
+        env:
+          NEXT_PUBLIC_ENVIRONMENT: "development"
 
   # Run user flow tests with Cypress
   user-flow:
@@ -169,17 +197,21 @@ jobs:
         containers: [1, 2] # Uses 2 parallel instances
         package:
           - packages/bootstrap
+          - packages/display
+          - packages/forms
+          - packages/interactions
     steps:
       - uses: actions/checkout@v4
         name: Checkout repository
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v4
-        name: Setup Node.js @v20
+        name: Setup Node.js
         with:
           cache: npm
-          node-version: 20.x
+          node-version: 22.x
 
       - run: npm ci
         name: Install dependencies
@@ -200,6 +232,10 @@ jobs:
           parallel: true # Runs test in parallel using settings above
           working-directory: ${{ matrix.package }}
         env:
+                    # overwrite commit message sent to Cypress Cloud
+          COMMIT_INFO_MESSAGE: ${{github.event.pull_request.title}}
+          # re-enable PR comment bot
+          COMMIT_INFO_SHA: ${{github.event.pull_request.head.sha}}
           # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
           # in GitHub repo → Settings → Secrets → Actions
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

@@ -1,6 +1,6 @@
 import * as str from "@theholocron/utils-string";
 import * as React from "react";
-import type { WithChildren } from "../type.ts";
+import type { WithChildren } from "../type";
 
 export interface ApplicationConf {
 	description?: string;

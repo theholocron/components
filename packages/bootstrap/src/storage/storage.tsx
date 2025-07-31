@@ -1,7 +1,7 @@
 import { storage, type TSessionStorage } from "@theholocron/utils-storage";
 import * as React from "react";
-import { type ApplicationConf } from "../configuration/index.ts";
-import type { WithChildren } from "../type.ts";
+import { type ApplicationConf } from "../configuration/index";
+import type { WithChildren } from "../type";
 
 const Context = React.createContext<TSessionStorage | undefined>(undefined);
 Context.displayName = "@theholocron/bootstrap/Storage";

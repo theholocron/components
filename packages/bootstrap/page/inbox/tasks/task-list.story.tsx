@@ -1,44 +1,32 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import * as TaskStories from "./task.story";
+import TaskStories from "./task.story";
+import { mockTasks } from "./task-list.mock";
 import { TaskList } from "./task-list";
 
-const meta: Meta<typeof TaskList> = {
+const meta = {
 	component: TaskList,
 	title: "TaskList",
 	argTypes: {
-		...TaskStories.default.argTypes,
+		...TaskStories.argTypes,
 	},
-};
+} satisfies Meta<typeof TaskList>;
 export default meta;
-type Story = StoryObj<typeof TaskList>;
 
-export const Default: Story = {
+type Story = StoryObj<typeof meta>;
+
+export const Default = {
 	args: {
-		tasks: [
-			{ id: "1", state: "TASK_INBOX", title: "Build a date picker" },
-			{ id: "2", state: "TASK_INBOX", title: "QA dropdown" },
-			{
-				id: "3",
-				state: "TASK_INBOX",
-				title: "Write a schema for account avatar component",
-			},
-			{ id: "4", state: "TASK_INBOX", title: "Export logo" },
-			{
-				id: "5",
-				state: "TASK_INBOX",
-				title: "Fix bug in input error state",
-			},
-			{
-				id: "6",
-				state: "TASK_INBOX",
-				title: "Draft monthly blog to customers",
-			},
-		],
+		tasks: mockTasks,
+		onTogglePinTask: () => {},
+		onArchiveTask: () => {},
+		onEditTitle: () => {},
+		onDeleteTask: () => {},
 	},
-};
+} satisfies Story;
 
-export const WithPinnedTasks: Story = {
+export const WithPinnedTasks = {
 	args: {
+		...Default.args,
 		tasks: [
 			{
 				id: "6",
@@ -50,18 +38,19 @@ export const WithPinnedTasks: Story = {
 				: []),
 		],
 	},
-};
+} satisfies Story;
 
-export const Loading: Story = {
+export const Loading = {
 	args: {
+		...Default.args,
 		tasks: [],
 		loading: true,
 	},
-};
+} satisfies Story;
 
-export const Empty: Story = {
+export const Empty = {
 	args: {
 		...Loading.args,
 		loading: false,
 	},
-};
+} satisfies Story;

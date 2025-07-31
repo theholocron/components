@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, userEvent, within } from "@storybook/test";
 import { delay, http, HttpResponse } from "msw";
-import * as MockLoading from "./loading.mock.tsx";
-import Loading, { useLoading } from "./index.ts";
+import { expect } from "storybook/test";
+import * as MockLoading from "./loading.mock";
+import Loading, { useLoading } from "./index";
 
 const meta = {
 	argTypes: {
@@ -14,6 +14,7 @@ const meta = {
 	title: "Loading",
 } satisfies Meta<typeof Loading.Provider>;
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Default = {
@@ -35,8 +36,7 @@ export const Default = {
 			<MockLoading.TestComponent />
 		</Loading.Provider>
 	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
+	play: async ({ canvas, userEvent }) => {
 		const fetchButton = await canvas.getByText("Fetch Data");
 
 		// Simulate clicking the button
@@ -75,9 +75,7 @@ export const Error = {
 
 		return <Component />;
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas }) => {
 		const errorMessage = await canvas.findByTestId("error-message");
 		expect(errorMessage).toHaveTextContent(
 			"useLoading must be used within Loading.Provider!"

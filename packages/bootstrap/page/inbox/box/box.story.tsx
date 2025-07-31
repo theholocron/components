@@ -1,18 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, userEvent, findByRole, within } from "@storybook/test";
 import { http, HttpResponse } from "msw";
+import { expect, findByRole, within } from "storybook/test";
 
 import { Default as TaskListDefault } from "../tasks/task-list.story";
 import { Inbox } from "./box";
 
-const meta: Meta<typeof Inbox> = {
+const meta = {
 	component: Inbox,
 	title: "Inbox",
-};
+} satisfies Meta<typeof Inbox>;
 export default meta;
-type Story = StoryObj<typeof Inbox>;
 
-export const Default: Story = {
+type Story = StoryObj<typeof meta>;
+
+export const Default = {
 	parameters: {
 		msw: {
 			handlers: [
@@ -22,9 +23,9 @@ export const Default: Story = {
 			],
 		},
 	},
-};
+} satisfies Story;
 
-export const Error: Story = {
+export const Error = {
 	args: {
 		error: "Something",
 	},
@@ -33,14 +34,13 @@ export const Error: Story = {
 			handlers: [http.get("/tasks", () => HttpResponse.json([]))],
 		},
 	},
-};
+} satisfies Story;
 
-export const PinTask: Story = {
+export const PinTask = {
 	parameters: {
 		...Default.parameters,
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
+	play: async ({ canvas, userEvent }) => {
 		const getTask = (id: string) =>
 			canvas.findByRole("listitem", { name: id });
 
@@ -57,14 +57,13 @@ export const PinTask: Story = {
 		});
 		await expect(unpinButton).toBeInTheDocument();
 	},
-};
+} satisfies Story;
 
-export const ArchiveTask: Story = {
+export const ArchiveTask = {
 	parameters: {
 		...Default.parameters,
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
+	play: async ({ canvas, userEvent }) => {
 		const getTask = (id: string) =>
 			canvas.findByRole("listitem", { name: id });
 
@@ -74,14 +73,13 @@ export const ArchiveTask: Story = {
 		});
 		await userEvent.click(archiveButton);
 	},
-};
+} satisfies Story;
 
-export const EditTask: Story = {
+export const EditTask = {
 	parameters: {
 		...Default.parameters,
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
+	play: async ({ canvas, userEvent }) => {
 		const getTask = (id: string) =>
 			canvas.findByRole("listitem", { name: id });
 
@@ -93,14 +91,13 @@ export const EditTask: Story = {
 			"Fix bug in input error state and disabled state"
 		);
 	},
-};
+} satisfies Story;
 
-export const DeleteTask: Story = {
+export const DeleteTask = {
 	parameters: {
 		...Default.parameters,
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
+	play: async ({ canvas, userEvent }) => {
 		const getTask = (id: string) =>
 			canvas.findByRole("listitem", { name: id });
 
@@ -113,4 +110,4 @@ export const DeleteTask: Story = {
 		await userEvent.click(deleteButton);
 		await expect(canvas.getAllByRole("listitem").length).toBe(5);
 	},
-};
+} satisfies Story;

@@ -1,4 +1,4 @@
-import { useLoading } from "./index.ts";
+import { useLoading } from "./index";
 
 const spinAnimation = `
 	@keyframes spin {

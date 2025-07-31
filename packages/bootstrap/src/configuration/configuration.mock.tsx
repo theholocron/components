@@ -1,4 +1,4 @@
-import { useConfiguration } from "./index.ts";
+import { useConfiguration } from "./index";
 
 export const mockConf = {
 	application: {

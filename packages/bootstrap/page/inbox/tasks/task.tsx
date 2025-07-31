@@ -1,12 +1,9 @@
 import { ActionIcon, Checkbox, Group, TextInput } from "@mantine/core";
 import { IconStar, IconTrash } from "@tabler/icons-react";
+import { type ITask } from "./use-tasks";
 
 export interface TaskProps {
-	task: {
-		id: string;
-		title: string;
-		state: "TASK_INBOX" | "TASK_PINNED" | "TASK_ARCHIVED";
-	};
+	task: ITask;
 	onArchiveTask: (archive: "ARCHIVE_TASK", id: string) => void;
 	onTogglePinTask: (
 		state: "TASK_INBOX" | "TASK_PINNED" | "TASK_ARCHIVED",

@@ -1,0 +1,79 @@
+{
+  "name": "@theholocron/components-display",
+  "version": "0.0.0",
+  "description": "A set of components to display data.",
+  "homepage": "https://github.com/theholocron/components#readme",
+  "bugs": "https://github.com/theholocron/components/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theholocron/components.git"
+  },
+  "license": "GPL-3.0",
+  "author": "Newton Koumantzelis",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/components-display.es.js",
+      "require": "./dist/components-display.cjs.js",
+      "types": "dist/index.d.ts"
+    },
+    "./style": "./dist/style.css"
+  },
+  "main": "dist/components-display.cjs.js",
+  "module": "dist/components-display.es.js",
+  "types": "dist/index.d.ts",
+  "style": "dist/style.css",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "build:storybook": "storybook build",
+    "dev": "vite",
+    "lint": "docker run -e LOG_LEVEL=DEBUG -e RUN_LOCAL=true -v .:/tmp/lint --rm ghcr.io/super-linter/super-linter:latest",
+    "preview": "vite preview",
+    "start:storybook": "storybook dev",
+    "test": "vitest",
+    "test:cypress": "cypress open",
+    "test:storybook": "vitest run",
+    "types": "npx tsc"
+  },
+  "dependencies": {
+    "@theholocron/utils-date-time": "^0.1.0",
+    "@theholocron/utils-string": "^0.2.1"
+  },
+  "devDependencies": {
+    "@mantine/core": "^7.13.5",
+    "@mantine/hooks": "^7.13.5",
+    "@tabler/icons-react": "^3.6.0",
+    "react-syntax-highlighter": "^15.6.1"
+  },
+  "peerDependencies": {
+    "@mantine/core": "^7",
+    "@mantine/hooks": "^7",
+    "@tabler/icons-react": "^3",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "packageManager": "npm@9.5.0",
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "./dist/**/*.js",
+        "maxSize": "100 kB"
+      }
+    ]
+  },
+  "msw": {
+    "workerDirectory": "public"
+  },
+  "releases": "https://github.com/theholocron/components/releases",
+  "wiki": "https://github.com/theholocron/components/wiki"
+}

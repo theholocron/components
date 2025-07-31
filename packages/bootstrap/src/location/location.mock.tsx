@@ -1,4 +1,4 @@
-import { useLocation } from "./index.ts";
+import { useLocation } from "./index";
 
 export function TestComponent() {
 	const { location, isLoading } = useLocation();

@@ -1,4 +1,4 @@
-import { useEnvironment } from "./index.ts";
+import { useEnvironment } from "./index";
 
 export function TestComponent() {
 	const environment = useEnvironment();

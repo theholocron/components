@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, within } from "@storybook/test";
-import Storage from "../storage/index.ts";
-import { Default as StorageDefault } from "../storage/storage.story.tsx";
-import Location, { useLocation } from "./index.ts";
-import { TestComponent } from "./location.mock.tsx";
+import { expect } from "storybook/test";
+import Storage from "../storage/index";
+import { Default as StorageDefault } from "../storage/storage.story";
+import Location, { useLocation } from "./index";
+import { TestComponent } from "./location.mock";
 
 const meta = {
 	component: Location.Provider,
@@ -17,6 +17,7 @@ const meta = {
 	],
 } satisfies Meta<typeof Location.Provider>;
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Default = {
@@ -45,9 +46,7 @@ export const Error = {
 
 		return <Component />;
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas }) => {
 		const errorMessage = await canvas.findByTestId("error-message");
 		expect(errorMessage).toHaveTextContent(
 			"useLocation must be used within a Location.Provider!"

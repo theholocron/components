@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useStorage } from "./index.ts";
+import { useStorage } from "./index";
 
 export function TestComponent() {
 	const [isSending, setIsSending] = React.useState(true);

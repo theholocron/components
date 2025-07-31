@@ -1,6 +1,6 @@
-import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { type Preview } from "@storybook/react";
 import { initialize, mswLoader } from "msw-storybook-addon";
+import { INITIAL_VIEWPORTS } from "storybook/viewport";
 
 // Initialize MSW
 initialize({ onUnhandledRequest: "bypass" });
@@ -9,11 +9,6 @@ const preview: Preview = {
 	// layout: "centered",
 	loaders: [mswLoader],
 	parameters: {
-		codesandbox: {
-			apiToken: process.env.STORYBOOK_CODE_SANDBOX_API_TOKEN,
-			template: "react",
-			privacy: "public",
-		},
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,

@@ -1,4 +1,4 @@
-import { Default as TaskListDefault } from "../inbox/tasks/task-list.story";
+import { mockTasks } from "../inbox/tasks/task-list.mock";
 
 describe("The Login Page", () => {
 	beforeEach(() => {
@@ -16,7 +16,7 @@ describe("The Login Page", () => {
 		// Mock the tasks fetch request
 		cy.intercept("GET", "/tasks", {
 			statusCode: 201,
-			body: TaskListDefault.args,
+			body: { tasks: mockTasks },
 		});
 	});
 

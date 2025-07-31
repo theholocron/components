@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, userEvent, within } from "@storybook/test";
-import * as MockConfiguration from "../configuration/configuration.mock.tsx";
-import Storage, { useStorage } from "./index.ts";
-import * as MockStorage from "./storage.mock.tsx";
+import { expect } from "storybook/test";
+import * as MockConfiguration from "../configuration/configuration.mock";
+import Storage, { useStorage } from "./index";
+import * as MockStorage from "./storage.mock";
 
 const meta = {
 	argTypes: {
@@ -16,6 +16,7 @@ const meta = {
 	title: "Storage",
 } satisfies Meta<typeof Storage.Provider>;
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Default = {
@@ -27,9 +28,7 @@ export const Default = {
 			<MockStorage.TestComponent />
 		</Storage.Provider>
 	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas, userEvent }) => {
 		// Check if the initial storage state is as expected
 		const initialStorage = await canvas.findByTestId("mock-storage");
 		expect(initialStorage).toBeTruthy();
@@ -77,9 +76,7 @@ export const Error = {
 
 		return <Component />;
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas }) => {
 		const errorMessage = await canvas.findByTestId("error-message");
 		expect(errorMessage).toHaveTextContent(
 			"useStorage must be used within Storage.Provider!"

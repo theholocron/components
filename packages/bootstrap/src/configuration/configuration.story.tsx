@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { expect, within } from "@storybook/test";
-import * as MockConfiguration from "./configuration.mock.tsx";
-import Configuration, { useConfiguration } from "./index.ts";
+import { expect } from "storybook/test";
+import * as MockConfiguration from "./configuration.mock";
+import Configuration, { useConfiguration } from "./index";
 
 const meta = {
 	argTypes: {
@@ -26,9 +26,7 @@ export const Default = {
 	args: {
 		conf: MockConfiguration.mockConf,
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas }) => {
 		// Check if the initial storage state is as expected
 		const initialStorage = await canvas.findByTestId("mock-configuration");
 		expect(initialStorage).toBeTruthy();
@@ -62,9 +60,7 @@ export const Error = {
 
 		return <Component />;
 	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
+	play: async ({ canvas }) => {
 		const errorMessage = await canvas.findByTestId("error-message");
 		expect(errorMessage).toHaveTextContent(
 			"useConfiguration must be used within Configuration.Provider!"
@@ -86,8 +82,7 @@ export const FallbackSlug = {
 		},
 	},
 	render: Default.render.bind({}),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
+	play: async ({ canvas }) => {
 		const appName = await canvas.findByText(/"slug": "fallback-slug"/);
 		expect(appName).toBeInTheDocument();
 	},
@@ -99,8 +94,7 @@ export const FallbackTitle = {
 		conf: MockConfiguration.mockConf,
 	},
 	render: Default.render.bind({}),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
+	play: async ({ canvas }) => {
 		const appName = await canvas.findByText(
 			/"title": "A Mock Application"/
 		);

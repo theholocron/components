@@ -1,6 +1,6 @@
-import { Provider } from "./location.tsx";
+import { Provider } from "./location";
 
-export { useLocation } from "./location.tsx";
-export type { TLocation } from "./location.tsx";
+export { useLocation } from "./location";
+export type { TLocation } from "./location";
 
 export default { Provider };
