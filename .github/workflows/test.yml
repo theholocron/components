@@ -91,7 +91,6 @@ jobs:
   visual-and-composition:
     name: Test Visual and Composition
     runs-on: ubuntu-latest
-    strategy:
     steps:
       - uses: actions/checkout@v4
         name: Checkout repository

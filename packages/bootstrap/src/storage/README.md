@@ -9,22 +9,22 @@ import { Storage } from "@theholocron/bootstrap";
 import * as React from "react";
 
 const conf: ApplicationConf = {
-    application: { id: "mock-app-id" },
+	application: { id: "mock-app-id" },
 };
 
 interface AppProps {
-    Component: React.ReactNode;
-    pageProps?: any;
+	Component: React.ReactNode;
+	pageProps?: any;
 }
 
 export default function App (props: AppProps) {
-    const { Component, pageProps } = props;
+	const { Component, pageProps } = props;
 
-    return (
-        <Storage.Provider conf={conf.application}>
-            <Component {...pageProps} />
-        </Storage.Provider>;
-    );
+	return (
+		<Storage.Provider conf={conf.application}>
+			<Component {...pageProps} />
+		</Storage.Provider>;
+	);
 }
 ```
 

@@ -9,18 +9,18 @@ import { Location } from "@theholocron/bootstrap";
 import * as React from "react";
 
 interface AppProps {
-    Component: React.ReactNode;
-    pageProps?: any;
+	Component: React.ReactNode;
+	pageProps?: any;
 }
 
 export default function App (props: AppProps) {
-    const { Component, pageProps } = props;
+	const { Component, pageProps } = props;
 
-    return (
-        <Location.Provider>
-            <Component {...pageProps} />
-        </Location.Provider>;
-    );
+	return (
+		<Location.Provider>
+			<Component {...pageProps} />
+		</Location.Provider>;
+	);
 }
 ```
 
