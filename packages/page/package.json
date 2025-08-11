@@ -51,7 +51,7 @@
     "@theholocron/utils-string": "^0.2.1"
   },
   "devDependencies": {
-    "@mantine/core": "^7.13.5",
+    "@mantine/core": "^8.2.4",
     "@mantine/hooks": "^7.13.5",
     "@tabler/icons-react": "^3.6.0",
     "react-syntax-highlighter": "^15.6.1"
